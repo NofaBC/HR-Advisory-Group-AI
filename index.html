@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HR Advisory Group AI™ — Integrated HR Advisory Platform</title>
+<style>
+  :root{
+    --navy:#0d1b2a;
+    --navy2:#14263a;
+    --ink:#192434;
+    --muted:#687386;
+    --line:#dfe5ec;
+    --soft:#f5f7fa;
+    --card:#ffffff;
+    --accent:#2b6cb0;
+    --accent2:#5b8ec8;
+    --success:#1f7a5c;
+    --warn:#9b6a00;
+    --risk:#a33d3d;
+    --purple:#6b57a8;
+    --shadow:0 12px 30px rgba(13,27,42,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:#eef2f6;color:var(--ink)}
+  button,input,select,textarea{font:inherit}
+  .app{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+  .sidebar{background:linear-gradient(180deg,var(--navy),#0a1521);color:white;padding:26px 18px;position:sticky;top:0;height:100vh}
+  .brand{padding:0 8px 24px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .brand .name{font-size:22px;font-weight:800;letter-spacing:-.3px}
+  .brand .tag{font-size:12px;color:#b9c6d6;line-height:1.5;margin-top:7px}
+  .nav{margin-top:22px;display:grid;gap:7px}
+  .nav button{border:0;background:transparent;color:#c9d5e3;text-align:left;padding:12px 13px;border-radius:10px;cursor:pointer;font-weight:650}
+  .nav button:hover,.nav button.active{background:rgba(255,255,255,.11);color:white}
+  .nav small{display:block;font-weight:500;color:#8fa0b4;margin-top:2px}
+  .sidebar-footer{position:absolute;bottom:20px;left:18px;right:18px;font-size:11px;color:#8fa0b4;line-height:1.5}
+  .main{min-width:0}
+  .topbar{height:74px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:10}
+  .top-title{font-weight:800}
+  .chips{display:flex;gap:8px;align-items:center}
+  .chip{padding:7px 10px;border-radius:99px;background:#eef4fb;color:#2c5f95;font-size:12px;font-weight:700}
+  .chip.demo{background:#fff6df;color:#8a6400}
+  .content{padding:28px;max-width:1500px;margin:0 auto}
+  .view{display:none}
+  .view.active{display:block}
+  .hero{background:linear-gradient(135deg,#ffffff,#f5f9fd);border:1px solid var(--line);border-radius:18px;padding:26px 28px;box-shadow:var(--shadow);display:flex;justify-content:space-between;gap:20px;align-items:center}
+  .hero h1{margin:0 0 8px;font-size:30px;letter-spacing:-.6px}
+  .hero p{margin:0;color:var(--muted);max-width:780px;line-height:1.55}
+  .human{background:#f0f8f5;color:#21644f;border:1px solid #cce7dc;padding:11px 13px;border-radius:12px;font-size:12px;font-weight:700;min-width:220px;text-align:center}
+  .grid{display:grid;gap:18px;margin-top:18px}
+  .grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 6px 18px rgba(13,27,42,.05)}
+  .card h3{margin:0 0 7px;font-size:17px}
+  .card p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+  .module{cursor:pointer;transition:.18s;position:relative;overflow:hidden;min-height:198px}
+  .module:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .module .number{font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.08em}
+  .module h2{font-size:19px;margin:14px 0 8px}
+  .module ul{padding-left:18px;color:var(--muted);font-size:12px;line-height:1.7;margin:10px 0 18px}
+  .module .open{font-weight:800;font-size:12px;color:var(--accent)}
+  .module:before{content:"";position:absolute;top:0;left:0;width:6px;height:100%;background:var(--accent)}
+  .module.er:before{background:var(--risk)}
+  .module.comp:before{background:var(--success)}
+  .module.org:before{background:var(--purple)}
+  .section-title{display:flex;align-items:end;justify-content:space-between;gap:14px;margin-bottom:18px}
+  .section-title h1{margin:0;font-size:26px}
+  .section-title p{margin:5px 0 0;color:var(--muted);font-size:13px}
+  .btn{border:0;border-radius:10px;padding:10px 14px;font-weight:750;cursor:pointer}
+  .btn.primary{background:var(--navy);color:white}
+  .btn.secondary{background:#eef3f8;color:#274663}
+  .btn.outline{background:white;border:1px solid var(--line);color:var(--ink)}
+  .btn.success{background:var(--success);color:white}
+  .btn.warn{background:#fff4d6;color:#785700;border:1px solid #ead9a5}
+  .toolbar{display:flex;gap:8px;flex-wrap:wrap}
+  .metric{padding:18px}
+  .metric .label{font-size:12px;color:var(--muted);font-weight:700}
+  .metric .value{font-size:27px;font-weight:850;margin-top:5px}
+  .metric .sub{font-size:11px;color:var(--muted);margin-top:4px}
+  .table-wrap{overflow:auto}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{text-align:left;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em;padding:11px 10px;border-bottom:1px solid var(--line)}
+  td{padding:13px 10px;border-bottom:1px solid #edf1f5}
+  tr:last-child td{border-bottom:0}
+  .badge{display:inline-flex;align-items:center;padding:5px 8px;border-radius:99px;font-size:11px;font-weight:800}
+  .badge.low{background:#eaf7f2;color:#22674f}
+  .badge.med{background:#fff4d6;color:#7c5c00}
+  .badge.high{background:#fdecec;color:#913a3a}
+  .badge.blue{background:#edf4fb;color:#2a5f93}
+  .badge.purple{background:#f1edfb;color:#604d9f}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  label{display:grid;gap:6px;font-size:12px;font-weight:750;color:#334155}
+  input,select,textarea{width:100%;border:1px solid #ccd5df;border-radius:10px;padding:10px 11px;background:white;color:var(--ink);outline:none}
+  input:focus,select:focus,textarea:focus{border-color:#7ba5cf;box-shadow:0 0 0 3px rgba(43,108,176,.1)}
+  textarea{min-height:100px;resize:vertical}
+  .ai-box{border:1px solid #cfe0f1;background:#f7fbff;border-radius:14px;padding:18px}
+  .ai-box h4{margin:0 0 8px;color:#244d74}
+  .ai-box p,.ai-box li{font-size:13px;color:#48627b;line-height:1.55}
+  .ai-box ul{padding-left:18px;margin:8px 0 0}
+  .risk-banner{padding:14px 16px;border-radius:12px;background:#fff4f4;border:1px solid #efc9c9;color:#7d3030;font-size:13px}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .factcol{border-radius:12px;padding:14px;border:1px solid var(--line);background:#fafbfd}
+  .factcol h4{margin:0 0 10px;font-size:13px}
+  .factcol ul{margin:0;padding-left:17px;color:#566273;font-size:12px;line-height:1.65}
+  .callout{border-left:4px solid var(--accent);background:#f6f9fc;padding:13px 15px;border-radius:8px;font-size:12px;color:#536174;line-height:1.55}
+  .policy-list{display:grid;gap:10px}
+  .policy{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:12px;padding:13px 14px;background:white}
+  .policy strong{display:block;font-size:13px}
+  .policy span{font-size:11px;color:var(--muted)}
+  .chart{display:flex;align-items:end;height:160px;gap:13px;padding-top:16px}
+  .bar{flex:1;background:#dfe8f2;border-radius:7px 7px 0 0;position:relative;min-width:22px}
+  .bar::after{content:attr(data-label);position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--muted);white-space:nowrap}
+  .bar::before{content:attr(data-value);position:absolute;top:-19px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:800}
+  .scenario{border:1px solid var(--line);border-radius:13px;padding:15px;background:#fff}
+  .scenario h4{margin:0 0 8px}
+  .money{font-weight:850;font-size:22px;margin-top:6px}
+  .footer-note{margin-top:22px;padding:14px 16px;background:white;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:11px;line-height:1.5}
+  .modal{position:fixed;inset:0;background:rgba(6,15,24,.56);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+  .modal.show{display:flex}
+  .modal-card{max-width:690px;width:100%;background:white;border-radius:18px;padding:24px;box-shadow:0 24px 70px rgba(0,0,0,.25)}
+  .modal-card h2{margin-top:0}
+  .modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+  .toast{position:fixed;right:24px;bottom:24px;background:#14263a;color:white;padding:12px 15px;border-radius:11px;display:none;z-index:120;box-shadow:var(--shadow);font-size:13px}
+  .toast.show{display:block}
+  @media(max-width:1100px){.grid.four{grid-template-columns:1fr 1fr}.grid.three{grid-template-columns:1fr 1fr}.facts{grid-template-columns:1fr}.app{grid-template-columns:220px 1fr}}
+  @media(max-width:760px){.app{display:block}.sidebar{height:auto;position:relative}.sidebar-footer{display:none}.nav{grid-template-columns:1fr 1fr}.topbar{position:relative}.grid.four,.grid.three,.grid.two,.form-grid{grid-template-columns:1fr}.hero{display:block}.human{margin-top:15px}.content{padding:18px}.sidebar{padding-bottom:18px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="name">HR Advisory Group AI™</div>
+      <div class="tag">Integrated HR Advisory Platform<br/>Consistent guidance. Better documentation. Human-controlled decisions.</div>
+    </div>
+    <div class="nav">
+      <button class="active" data-view="dashboard">Overview<small>Four-module command center</small></button>
+      <button data-view="talent">Recruitment & Retention<small>Talent intelligence</small></button>
+      <button data-view="employee">Employee Relations<small>Cases & performance</small></button>
+      <button data-view="compensation">Compensation & Benefits<small>Pay & total rewards</small></button>
+      <button data-view="strategy">Organizational Strategy<small>Structure & cost scenarios</small></button>
+      <button data-view="policies">Policy Library<small>Shared policy intelligence</small></button>
+    </div>
+    <div class="sidebar-footer">Demo prototype · All data fictional<br/>AI-assisted drafts — human review required</div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="top-title">HR Advisory Group AI™</div>
+      <div class="chips">
+        <span class="chip demo">Prototype</span>
+        <span class="chip">Human Review Required</span>
+      </div>
+    </header>
+
+    <div class="content">
+      <!-- DASHBOARD -->
+      <section id="dashboard" class="view active">
+        <div class="hero">
+          <div>
+            <h1>One platform. Four HR advisory disciplines.</h1>
+            <p>AI-assisted workflows for talent, employee relations, compensation, and organizational strategy — connected by shared policy intelligence, documentation, risk awareness, and human approval.</p>
+          </div>
+          <div>
+            <div class="human">AI assists.<br/>HR professionals decide.</div>
+            <div style="margin-top:10px;text-align:center">
+              <a href="https://hr-advisory-group-ai.vercel.app/" target="_blank" rel="noopener"
+                 style="display:inline-block;padding:9px 12px;border-radius:10px;background:#ffffff;border:1px solid #dfe5ec;color:#274663;text-decoration:none;font-size:12px;font-weight:800">
+                 HR Advisory Case Management ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid four">
+          <div class="card module" onclick="switchView('talent')">
+            <div class="number">MODULE 01</div><h2>Recruitment & Retention</h2>
+            <ul><li>Talent intake & requisitions</li><li>Candidate evaluation support</li><li>Retention risk & action plans</li></ul>
+            <div class="open">Open module →</div>
+          </div>
+          <div class="card module er" onclick="switchView('employee')">
+            <div class="number">MODULE 02</div><h2>Employee Relations & Performance</h2>
+            <ul><li>Case intake & classification</li><li>Investigations & performance</li><li>Risk flags & human escalation</li></ul>
+            <div class="open">Open module →</div>
+          </div>
+          <div class="card module comp" onclick="switchView('compensation')">
+            <div class="number">MODULE 03</div><h2>Compensation & Benefits</h2>
+            <ul><li>Compensation philosophy</li><li>Pay structure analysis</li><li>Total rewards & cost review</li></ul>
+            <div class="open">Open module →</div>
+          </div>
+          <div class="card module org" onclick="switchView('strategy')">
+            <div class="number">MODULE 04</div><h2>Organizational Strategy</h2>
+            <ul><li>Org structure analysis</li><li>Restructuring scenarios</li><li>Headcount & cost modeling</li></ul>
+            <div class="open">Open module →</div>
+          </div>
+        </div>
+
+        <div class="grid four">
+          <div class="card metric"><div class="label">OPEN ADVISORY ITEMS</div><div class="value">18</div><div class="sub">Across all four modules</div></div>
+          <div class="card metric"><div class="label">HIGH-RISK REVIEWS</div><div class="value">3</div><div class="sub">Human approval required</div></div>
+          <div class="card metric"><div class="label">DRAFTS AWAITING REVIEW</div><div class="value">7</div><div class="sub">AI-generated, not final</div></div>
+          <div class="card metric"><div class="label">POLICIES IN LIBRARY</div><div class="value">24</div><div class="sub">Demo policy set</div></div>
+        </div>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>Cross-Module Advisory Queue</h3>
+            <p>Priority items requiring HR attention.</p>
+            <div class="table-wrap" style="margin-top:12px">
+              <table>
+                <thead><tr><th>Item</th><th>Module</th><th>Risk</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>Jordan Reyes — attendance</td><td>Employee Relations</td><td><span class="badge high">High</span></td><td>Review required</td></tr>
+                  <tr><td>Senior Analyst requisition</td><td>Recruitment</td><td><span class="badge low">Low</span></td><td>Draft ready</td></tr>
+                  <tr><td>Operations pay compression</td><td>Compensation</td><td><span class="badge med">Moderate</span></td><td>Analysis ready</td></tr>
+                  <tr><td>Customer Success redesign</td><td>Org Strategy</td><td><span class="badge med">Moderate</span></td><td>Scenario review</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Human-Control Framework</h3>
+            <p>Every module follows the same governance model.</p>
+            <div class="ai-box" style="margin-top:12px">
+              <h4>AI may assist with:</h4>
+              <ul><li>Fact organization and clarification</li><li>Drafting and summarization</li><li>Risk and policy-area flagging</li><li>Scenario generation and comparison</li></ul>
+            </div>
+            <div class="callout" style="margin-top:12px"><strong>Human decision point:</strong> Final employment, legal, disciplinary, accommodation, termination, compensation, and organizational decisions remain with authorized people.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TALENT -->
+      <section id="talent" class="view">
+        <div class="section-title">
+          <div><h1>Recruitment & Retention</h1><p>Talent intelligence from requisition through retention planning.</p></div>
+          <div class="toolbar"><button class="btn outline" onclick="showToast('Demo requisition opened')">Open Requisition</button><button class="btn primary" onclick="openModal('talentModal')">New Talent Review</button></div>
+        </div>
+
+        <div class="grid four">
+          <div class="card metric"><div class="label">OPEN REQUISITIONS</div><div class="value">6</div><div class="sub">2 priority roles</div></div>
+          <div class="card metric"><div class="label">CANDIDATES IN REVIEW</div><div class="value">31</div><div class="sub">Across active searches</div></div>
+          <div class="card metric"><div class="label">RETENTION WATCH</div><div class="value">4</div><div class="sub">Requires manager follow-up</div></div>
+          <div class="card metric"><div class="label">TIME-TO-FILL</div><div class="value">34d</div><div class="sub">Demo rolling average</div></div>
+        </div>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>Priority Requisition — Senior Analyst</h3>
+            <div class="form-grid" style="margin-top:15px">
+              <label>Business Need<input value="Replace departing analyst; expand reporting capacity"></label>
+              <label>Location<select><option>Hybrid — Maryland</option><option>Remote</option></select></label>
+              <label>Required Skills<input value="Analytics, SQL, stakeholder communication"></label>
+              <label>Target Start<input value="2026-10-01"></label>
+            </div>
+            <div class="ai-box" style="margin-top:14px">
+              <h4>AI-assisted hiring brief</h4>
+              <p>Role requires both technical analysis and stakeholder-facing communication. Consider structured scoring across analytical depth, business translation, and collaboration. Draft interview guide is ready for human review.</p>
+            </div>
+            <div class="toolbar" style="margin-top:14px"><button class="btn secondary" onclick="showToast('Interview guide generated for review')">Generate Interview Guide</button><button class="btn primary" onclick="showToast('Candidate scorecard prepared')">Prepare Scorecard</button></div>
+          </div>
+
+          <div class="card">
+            <h3>Retention Intelligence</h3>
+            <p>Signals prompt human review; they do not predict or determine employment outcomes.</p>
+            <div class="table-wrap" style="margin-top:13px">
+              <table>
+                <thead><tr><th>Team</th><th>Signal</th><th>Priority</th><th>Suggested Action</th></tr></thead>
+                <tbody>
+                  <tr><td>Operations</td><td>Turnover ↑</td><td><span class="badge med">Moderate</span></td><td>Manager listening session</td></tr>
+                  <tr><td>Finance</td><td>Pay compression</td><td><span class="badge med">Moderate</span></td><td>Compensation review</td></tr>
+                  <tr><td>Customer Success</td><td>Span of control</td><td><span class="badge blue">Review</span></td><td>Org design analysis</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout" style="margin-top:14px">Cross-module intelligence can route an issue from Retention to Compensation or Organizational Strategy without losing context.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EMPLOYEE RELATIONS -->
+      <section id="employee" class="view">
+        <div class="section-title">
+          <div><h1>Employee Relations & Performance</h1><p>Preserves the original HR Advisory Group AI™ case-centered workflow.</p></div>
+          <div class="toolbar">
+            <a class="btn outline" href="https://hr-advisory-group-ai.vercel.app/" target="_blank" rel="noopener" style="text-decoration:none">HR Advisory Case Management ↗</a>
+            <button class="btn outline" onclick="showToast('Case search ready')">Search Cases</button>
+            <button class="btn primary" onclick="openModal('caseModal')">New HR Case</button>
+          </div>
+        </div>
+        <div class="callout" style="margin-bottom:18px">
+          <strong>HR Advisory Case Management:</strong>
+          <a href="https://hr-advisory-group-ai.vercel.app/" target="_blank" rel="noopener" style="color:#2b6cb0;font-weight:800">
+            https://hr-advisory-group-ai.vercel.app/
+          </a>
+          — retained as the original Employee Relations / HR Advisory concept.
+        </div>
+
+        <div class="grid four">
+          <div class="card metric"><div class="label">OPEN CASES</div><div class="value">12</div><div class="sub">Employee relations</div></div>
+          <div class="card metric"><div class="label">HIGH RISK</div><div class="value">3</div><div class="sub">Escalation required</div></div>
+          <div class="card metric"><div class="label">AWAITING INFO</div><div class="value">5</div><div class="sub">Clarification needed</div></div>
+          <div class="card metric"><div class="label">DRAFTS TO REVIEW</div><div class="value">7</div><div class="sub">Human approval pending</div></div>
+        </div>
+
+        <div class="card" style="margin-top:18px">
+          <div style="display:flex;justify-content:space-between;gap:15px;align-items:start">
+            <div>
+              <div style="font-size:11px;color:var(--muted);font-weight:800">CASE HR-2026-0142</div>
+              <h2 style="margin:5px 0 3px">Jordan Reyes — Attendance & Performance Concern</h2>
+              <p>Manager consultation · Operations · Maryland</p>
+            </div>
+            <span class="badge high">High Review</span>
+          </div>
+
+          <div class="risk-banner" style="margin-top:16px"><strong>AI risk flag:</strong> Attendance concerns may intersect with protected leave or accommodation. Confirm facts and policy context before any disciplinary action. Human HR review required.</div>
+
+          <div class="facts" style="margin-top:15px">
+            <div class="factcol"><h4>Confirmed Facts</h4><ul><li>Manager consultation submitted Aug. 17</li><li>Three documented late arrivals</li><li>Attendance policy is referenced</li></ul></div>
+            <div class="factcol"><h4>Unverified Statements</h4><ul><li>Manager states performance declined</li><li>Employee reportedly mentioned a health concern</li><li>Team impact has not been quantified</li></ul></div>
+            <div class="factcol"><h4>Missing Information</h4><ul><li>Prior coaching documentation</li><li>Applicable leave/accommodation status</li><li>Employee response and timeline</li></ul></div>
+          </div>
+
+          <div class="grid two">
+            <div class="ai-box">
+              <h4>Recommended Clarifying Questions</h4>
+              <ul><li>Has the employee requested leave or an accommodation?</li><li>What prior coaching or notice has been documented?</li><li>Are attendance expectations applied consistently?</li><li>What specific performance impact has been observed?</li></ul>
+            </div>
+            <div class="ai-box">
+              <h4>Draft Work Product</h4>
+              <p><strong>Status:</strong> Draft pending human review.</p>
+              <ul><li>Manager consultation summary</li><li>Factual timeline</li><li>Follow-up question set</li><li>Policy areas for HR review</li><li>Next-step checklist</li></ul>
+            </div>
+          </div>
+
+          <div class="toolbar" style="margin-top:15px">
+            <button class="btn secondary" onclick="showToast('Draft advisory summary generated')">Generate Advisory Draft</button>
+            <button class="btn warn" onclick="showToast('Escalation routed for human review')">Escalate for Review</button>
+            <button class="btn primary" onclick="openModal('approvalModal')">Human Review</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPENSATION -->
+      <section id="compensation" class="view">
+        <div class="section-title">
+          <div><h1>Compensation & Benefits</h1><p>Structured analysis for compensation philosophy, pay architecture, and total rewards.</p></div>
+          <button class="btn primary" onclick="openModal('compModal')">New Compensation Review</button>
+        </div>
+
+        <div class="grid four">
+          <div class="card metric"><div class="label">POSITIONS REVIEWED</div><div class="value">46</div><div class="sub">Demo dataset</div></div>
+          <div class="card metric"><div class="label">PAY COMPRESSION FLAGS</div><div class="value">5</div><div class="sub">Human analysis needed</div></div>
+          <div class="card metric"><div class="label">BENEFIT COST / FTE</div><div class="value">$14.8K</div><div class="sub">Illustrative</div></div>
+          <div class="card metric"><div class="label">OPEN REVIEWS</div><div class="value">4</div><div class="sub">2 executive-level</div></div>
+        </div>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>Operations Pay Structure Review</h3>
+            <div class="form-grid" style="margin-top:14px">
+              <label>Job Family<select><option>Operations</option><option>Finance</option><option>Technology</option></select></label>
+              <label>Location<select><option>Maryland</option><option>Multi-state</option></select></label>
+              <label>Current Range<input value="$58,000 – $74,000"></label>
+              <label>Illustrative Benchmark<input value="$62,000 – $82,000"></label>
+            </div>
+            <div class="ai-box" style="margin-top:14px">
+              <h4>AI-assisted observation</h4>
+              <p>Current upper range trails the illustrative benchmark and may contribute to compression between experienced incumbents and new hires. Validate market data, internal equity, budget, and compensation philosophy before changes are recommended.</p>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Total Rewards Comparison</h3>
+            <div class="chart">
+              <div class="bar" style="height:72%" data-label="Salary" data-value="$72K"></div>
+              <div class="bar" style="height:15%" data-label="Health" data-value="$15K"></div>
+              <div class="bar" style="height:6%" data-label="Retirement" data-value="$6K"></div>
+              <div class="bar" style="height:4%" data-label="Bonus" data-value="$4K"></div>
+              <div class="bar" style="height:3%" data-label="Other" data-value="$3K"></div>
+            </div>
+            <div class="callout" style="margin-top:30px">Illustrative values only. Production analysis would use authorized employer data and approved market sources.</div>
+            <div class="toolbar" style="margin-top:14px"><button class="btn secondary" onclick="showToast('Compensation summary prepared for review')">Prepare Review Memo</button></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STRATEGY -->
+      <section id="strategy" class="view">
+        <div class="section-title">
+          <div><h1>Organizational Strategy</h1><p>Human-capital strategy, organizational restructuring, and cost scenario planning.</p></div>
+          <button class="btn primary" onclick="openModal('strategyModal')">New Strategy Scenario</button>
+        </div>
+
+        <div class="grid four">
+          <div class="card metric"><div class="label">CURRENT HEADCOUNT</div><div class="value">128</div><div class="sub">Illustrative company</div></div>
+          <div class="card metric"><div class="label">ANNUAL PEOPLE COST</div><div class="value">$11.4M</div><div class="sub">Illustrative baseline</div></div>
+          <div class="card metric"><div class="label">SPAN FLAGS</div><div class="value">6</div><div class="sub">Manager review needed</div></div>
+          <div class="card metric"><div class="label">SCENARIOS</div><div class="value">3</div><div class="sub">No action taken automatically</div></div>
+        </div>
+
+        <div class="grid three">
+          <div class="scenario">
+            <span class="badge blue">Baseline</span><h4>Current Structure</h4>
+            <p>128 employees · 21 managers</p><div class="money">$11.4M</div><p>Estimated annual people cost</p>
+          </div>
+          <div class="scenario">
+            <span class="badge purple">Scenario A</span><h4>Layer Simplification</h4>
+            <p>Consolidate selected management layers</p><div class="money">$620K</div><p>Illustrative annual cost difference</p>
+          </div>
+          <div class="scenario">
+            <span class="badge med">Scenario B</span><h4>Shared Services Model</h4>
+            <p>Centralize selected support functions</p><div class="money">$410K</div><p>Illustrative annual cost difference</p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>AI-Assisted Organization Review</h3>
+            <div class="ai-box" style="margin-top:12px">
+              <h4>Potential discussion areas</h4>
+              <ul><li>Three teams have manager spans below 3 direct reports.</li><li>Two support roles show overlapping responsibilities.</li><li>Customer Success has a high span of control and elevated turnover.</li><li>Any restructuring recommendation requires leadership, HR, financial, and legal review.</li></ul>
+            </div>
+            <div class="toolbar" style="margin-top:14px"><button class="btn secondary" onclick="showToast('Executive strategy brief generated')">Generate Strategy Brief</button></div>
+          </div>
+          <div class="card">
+            <h3>Scenario Decision Framework</h3>
+            <table>
+              <thead><tr><th>Factor</th><th>Baseline</th><th>Scenario A</th><th>Scenario B</th></tr></thead>
+              <tbody>
+                <tr><td>Estimated cost</td><td>$11.4M</td><td>$10.78M</td><td>$10.99M</td></tr>
+                <tr><td>Change complexity</td><td>Low</td><td>High</td><td>Moderate</td></tr>
+                <tr><td>Employee impact</td><td>Low</td><td>High</td><td>Moderate</td></tr>
+                <tr><td>Human review</td><td>—</td><td>Required</td><td>Required</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- POLICIES -->
+      <section id="policies" class="view">
+        <div class="section-title">
+          <div><h1>Policy Library</h1><p>Shared policy intelligence supporting all four advisory modules.</p></div>
+          <button class="btn primary" onclick="openModal('policyModal')">Upload Policy</button>
+        </div>
+        <div class="grid two">
+          <div class="card">
+            <h3>Demo Policy Set</h3>
+            <div class="policy-list" style="margin-top:13px">
+              <div class="policy"><div><strong>Attendance & Punctuality</strong><span>Employee Relations · v3.2</span></div><span class="badge blue">Active</span></div>
+              <div class="policy"><div><strong>Equal Employment Opportunity</strong><span>Compliance · v5.0</span></div><span class="badge blue">Active</span></div>
+              <div class="policy"><div><strong>Performance Management</strong><span>Employee Relations · v2.4</span></div><span class="badge blue">Active</span></div>
+              <div class="policy"><div><strong>Compensation Administration</strong><span>Compensation · v1.8</span></div><span class="badge blue">Active</span></div>
+              <div class="policy"><div><strong>Internal Mobility</strong><span>Talent · v2.1</span></div><span class="badge blue">Active</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Policy-Aware AI</h3>
+            <div class="ai-box" style="margin-top:12px">
+              <h4>How production use would work</h4>
+              <ul><li>Authorized users upload approved company policies.</li><li>AI identifies potentially relevant policy areas.</li><li>Outputs cite the internal policy source used.</li><li>AI does not guarantee legal compliance.</li><li>Human HR, legal, or compliance reviewers remain accountable.</li></ul>
+            </div>
+            <div class="callout" style="margin-top:12px"><strong>Prototype note:</strong> Current policies are fictional placeholders. Secure document storage, versioning, permissions, and retention controls are production features.</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer-note">
+        <strong>Prototype disclaimer:</strong> HR Advisory Group AI™ provides AI-assisted drafts, workflow support, analysis, and scenario exploration. It does not make final employment, legal, medical, disciplinary, accommodation, termination, compensation, benefit, or organizational decisions. Human review is required. All people, organizations, policies, compensation figures, and cases shown in this prototype are fictional or illustrative.
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- MODALS -->
+<div id="caseModal" class="modal"><div class="modal-card"><h2>New HR Case</h2><div class="form-grid"><label>Request Type<select><option>Manager consultation</option><option>Workplace concern</option><option>Performance matter</option><option>Leave / accommodation</option></select></label><label>Urgency<select><option>Routine</option><option>Time-sensitive</option><option>Urgent</option></select></label><label>Location<input value="Maryland"></label><label>Department<input placeholder="Department"></label></div><label style="margin-top:12px">Describe the request<textarea placeholder="Describe facts, dates, prior actions, and desired outcome..."></textarea></label><div class="modal-actions"><button class="btn outline" onclick="closeModal('caseModal')">Cancel</button><button class="btn primary" onclick="demoSubmit('caseModal','AI intake started — clarifying questions prepared')">Start AI Intake</button></div></div></div>
+
+<div id="talentModal" class="modal"><div class="modal-card"><h2>New Talent Review</h2><div class="form-grid"><label>Review Type<select><option>Recruitment</option><option>Retention</option><option>Workforce planning</option></select></label><label>Priority<select><option>Standard</option><option>Priority</option></select></label><label>Role / Team<input placeholder="Role or team"></label><label>Location<input placeholder="Location"></label></div><label style="margin-top:12px">Business context<textarea placeholder="Hiring need, retention concern, workforce objective..."></textarea></label><div class="modal-actions"><button class="btn outline" onclick="closeModal('talentModal')">Cancel</button><button class="btn primary" onclick="demoSubmit('talentModal','Talent review prepared for human validation')">Generate Review</button></div></div></div>
+
+<div id="compModal" class="modal"><div class="modal-card"><h2>New Compensation Review</h2><div class="form-grid"><label>Review Type<select><option>Pay structure</option><option>Pay compression</option><option>Benefits cost</option><option>Compensation philosophy</option></select></label><label>Job Family<input placeholder="Job family"></label><label>Current Range<input placeholder="$0 – $0"></label><label>Location<input placeholder="Location"></label></div><label style="margin-top:12px">Review objective<textarea placeholder="What decision or analysis is needed?"></textarea></label><div class="modal-actions"><button class="btn outline" onclick="closeModal('compModal')">Cancel</button><button class="btn primary" onclick="demoSubmit('compModal','Compensation analysis draft created')">Analyze</button></div></div></div>
+
+<div id="strategyModal" class="modal"><div class="modal-card"><h2>New Organization Strategy Scenario</h2><div class="form-grid"><label>Objective<select><option>Cost optimization</option><option>Restructuring</option><option>Span of control</option><option>Growth planning</option></select></label><label>Business Unit<input placeholder="Business unit"></label><label>Current Headcount<input placeholder="Headcount"></label><label>Target / Constraint<input placeholder="Budget or target"></label></div><label style="margin-top:12px">Strategic context<textarea placeholder="Describe the current structure, challenge, and desired outcome..."></textarea></label><div class="modal-actions"><button class="btn outline" onclick="closeModal('strategyModal')">Cancel</button><button class="btn primary" onclick="demoSubmit('strategyModal','Organization scenarios generated for executive review')">Generate Scenarios</button></div></div></div>
+
+<div id="policyModal" class="modal"><div class="modal-card"><h2>Upload Policy — Prototype</h2><label>Policy Name<input placeholder="Policy title"></label><div class="form-grid" style="margin-top:12px"><label>Category<select><option>Employee Relations</option><option>Talent</option><option>Compensation</option><option>Organization</option></select></label><label>Version<input placeholder="v1.0"></label></div><label style="margin-top:12px">Demo file selector<input type="file"></label><div class="callout" style="margin-top:13px">Prototype only. Production upload requires secure storage, role-based access, version control, retention rules, and audit logging.</div><div class="modal-actions"><button class="btn outline" onclick="closeModal('policyModal')">Cancel</button><button class="btn primary" onclick="demoSubmit('policyModal','Policy staged for authorized review')">Stage Policy</button></div></div></div>
+
+<div id="approvalModal" class="modal"><div class="modal-card"><h2>Human Review — HR-2026-0142</h2><p style="color:var(--muted)">AI has prepared a draft advisory work product. An authorized HR professional must review the facts, risk flags, policy context, and proposed next steps.</p><label>Reviewer Notes<textarea placeholder="Add human review notes..."></textarea></label><div class="modal-actions"><button class="btn outline" onclick="closeModal('approvalModal')">Close</button><button class="btn warn" onclick="demoSubmit('approvalModal','Case returned for revision')">Return for Revision</button><button class="btn success" onclick="demoSubmit('approvalModal','Human review recorded — demo only')">Approve Draft</button></div></div></div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+function switchView(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>switchView(b.dataset.view)));
+function openModal(id){document.getElementById(id).classList.add('show')}
+function closeModal(id){document.getElementById(id).classList.remove('show')}
+function demoSubmit(id,msg){closeModal(id);showToast(msg)}
+function showToast(msg){
+  const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(window._toastTimer); window._toastTimer=setTimeout(()=>t.classList.remove('show'),2800);
+}
+document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('show')}));
+</script>
+</body>
+</html>
