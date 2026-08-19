@@ -125,6 +125,18 @@
   .toast.show{display:block}
   @media(max-width:1100px){.grid.four{grid-template-columns:1fr 1fr}.grid.three{grid-template-columns:1fr 1fr}.facts{grid-template-columns:1fr}.app{grid-template-columns:220px 1fr}}
   @media(max-width:760px){.app{display:block}.sidebar{height:auto;position:relative}.sidebar-footer{display:none}.nav{grid-template-columns:1fr 1fr}.topbar{position:relative}.grid.four,.grid.three,.grid.two,.form-grid{grid-template-columns:1fr}.hero{display:block}.human{margin-top:15px}.content{padding:18px}.sidebar{padding-bottom:18px}}
+
+  .feature-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:16px}
+  .feature-tile{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff;cursor:pointer;transition:.16s}
+  .feature-tile:hover{transform:translateY(-1px);box-shadow:0 7px 18px rgba(13,27,42,.07)}
+  .feature-tile strong{display:block;font-size:13px;margin-bottom:4px}
+  .feature-tile span{font-size:11px;color:var(--muted);line-height:1.45}
+  .workflow-panel{margin-top:18px;border:1px solid var(--line);border-radius:14px;padding:18px;background:#fbfcfe}
+  .workflow-panel h3{margin-top:0}
+  .mini-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+  .mini-btn{border:1px solid var(--line);background:white;border-radius:9px;padding:8px 10px;font-size:11px;font-weight:750;cursor:pointer}
+  .mini-btn:hover{background:#f3f6f9}
+
 </style>
 </head>
 <body>
@@ -234,17 +246,25 @@
       <!-- TALENT -->
       <section id="talent" class="view">
         <div class="section-title">
-          <div><h1>Recruitment & Retention</h1><p>Talent intelligence from requisition through retention planning.</p></div>
+          <div><h1>Recruitment & Retention</h1><p>Talent intelligence from workforce need through hiring, onboarding, mobility, and retention planning.</p></div>
           <div class="toolbar"><button class="btn outline" onclick="showToast('Demo requisition opened')">Open Requisition</button><button class="btn primary" onclick="openModal('talentModal')">New Talent Review</button></div>
         </div>
-
         <div class="grid four">
           <div class="card metric"><div class="label">OPEN REQUISITIONS</div><div class="value">6</div><div class="sub">2 priority roles</div></div>
           <div class="card metric"><div class="label">CANDIDATES IN REVIEW</div><div class="value">31</div><div class="sub">Across active searches</div></div>
           <div class="card metric"><div class="label">RETENTION WATCH</div><div class="value">4</div><div class="sub">Requires manager follow-up</div></div>
           <div class="card metric"><div class="label">TIME-TO-FILL</div><div class="value">34d</div><div class="sub">Demo rolling average</div></div>
         </div>
-
+        <div class="feature-grid">
+          <div class="feature-tile" onclick="showToast('Job description builder opened')"><strong>Job Description Builder</strong><span>Draft role purpose, responsibilities, requirements, and success measures.</span></div>
+          <div class="feature-tile" onclick="showToast('Candidate comparison workspace opened')"><strong>Candidate Comparison</strong><span>Compare structured scorecards without making autonomous hiring decisions.</span></div>
+          <div class="feature-tile" onclick="showToast('Interview guide generated for review')"><strong>Interview Guide</strong><span>Generate role-specific behavioral and technical interview questions.</span></div>
+          <div class="feature-tile" onclick="showToast('30/60/90-day plan prepared')"><strong>30/60/90-Day Plan</strong><span>Prepare onboarding milestones, outcomes, and manager checkpoints.</span></div>
+          <div class="feature-tile" onclick="showToast('Stay interview workflow opened')"><strong>Stay Interviews</strong><span>Create structured stay-interview questions and action themes.</span></div>
+          <div class="feature-tile" onclick="showToast('Exit trend analysis prepared')"><strong>Exit Analysis</strong><span>Summarize recurring exit themes and retention opportunities.</span></div>
+          <div class="feature-tile" onclick="showToast('Internal mobility review opened')"><strong>Internal Mobility</strong><span>Identify potential skill matches for internal movement and development.</span></div>
+          <div class="feature-tile" onclick="showToast('Workforce gap analysis prepared')"><strong>Workforce Gap Analysis</strong><span>Compare current skills, future needs, and hiring priorities.</span></div>
+        </div>
         <div class="grid two">
           <div class="card">
             <h3>Priority Requisition — Senior Analyst</h3>
@@ -260,21 +280,28 @@
             </div>
             <div class="toolbar" style="margin-top:14px"><button class="btn secondary" onclick="showToast('Interview guide generated for review')">Generate Interview Guide</button><button class="btn primary" onclick="showToast('Candidate scorecard prepared')">Prepare Scorecard</button></div>
           </div>
-
           <div class="card">
             <h3>Retention Intelligence</h3>
             <p>Signals prompt human review; they do not predict or determine employment outcomes.</p>
             <div class="table-wrap" style="margin-top:13px">
-              <table>
-                <thead><tr><th>Team</th><th>Signal</th><th>Priority</th><th>Suggested Action</th></tr></thead>
-                <tbody>
-                  <tr><td>Operations</td><td>Turnover ↑</td><td><span class="badge med">Moderate</span></td><td>Manager listening session</td></tr>
-                  <tr><td>Finance</td><td>Pay compression</td><td><span class="badge med">Moderate</span></td><td>Compensation review</td></tr>
-                  <tr><td>Customer Success</td><td>Span of control</td><td><span class="badge blue">Review</span></td><td>Org design analysis</td></tr>
-                </tbody>
-              </table>
+              <table><thead><tr><th>Team</th><th>Signal</th><th>Priority</th><th>Suggested Action</th></tr></thead>
+              <tbody>
+                <tr><td>Operations</td><td>Turnover ↑</td><td><span class="badge med">Moderate</span></td><td>Manager listening session</td></tr>
+                <tr><td>Finance</td><td>Pay compression</td><td><span class="badge med">Moderate</span></td><td>Compensation review</td></tr>
+                <tr><td>Customer Success</td><td>Span of control</td><td><span class="badge blue">Review</span></td><td>Org design analysis</td></tr>
+              </tbody></table>
             </div>
             <div class="callout" style="margin-top:14px">Cross-module intelligence can route an issue from Retention to Compensation or Organizational Strategy without losing context.</div>
+          </div>
+        </div>
+        <div class="workflow-panel">
+          <h3>Talent Workflow</h3>
+          <p>Business need → role design → sourcing strategy → structured evaluation → selection support → onboarding → retention follow-up.</p>
+          <div class="mini-actions">
+            <button class="mini-btn" onclick="showToast('Hiring brief prepared')">Hiring Brief</button>
+            <button class="mini-btn" onclick="showToast('Structured interview kit prepared')">Interview Kit</button>
+            <button class="mini-btn" onclick="showToast('Onboarding plan prepared')">Onboarding Plan</button>
+            <button class="mini-btn" onclick="showToast('Retention action plan prepared')">Retention Plan</button>
           </div>
         </div>
       </section>
@@ -282,7 +309,7 @@
       <!-- EMPLOYEE RELATIONS -->
       <section id="employee" class="view">
         <div class="section-title">
-          <div><h1>Employee Relations & Performance</h1><p>Preserves the original HR Advisory Group AI™ case-centered workflow.</p></div>
+          <div><h1>Employee Relations & Performance</h1><p>Structured advisory case management for workplace concerns, performance, investigations, discipline, and escalation.</p></div>
           <div class="toolbar">
             <a class="btn outline" href="https://hr-advisory-group-ai.vercel.app/" target="_blank" rel="noopener" style="text-decoration:none">HR Advisory Case Management ↗</a>
             <button class="btn outline" onclick="showToast('Case search ready')">Search Cases</button>
@@ -291,53 +318,54 @@
         </div>
         <div class="callout" style="margin-bottom:18px">
           <strong>HR Advisory Case Management:</strong>
-          <a href="https://hr-advisory-group-ai.vercel.app/" target="_blank" rel="noopener" style="color:#2b6cb0;font-weight:800">
-            https://hr-advisory-group-ai.vercel.app/
-          </a>
-          — retained as the original Employee Relations / HR Advisory concept.
+          <a href="https://hr-advisory-group-ai.vercel.app/" target="_blank" rel="noopener" style="color:#2b6cb0;font-weight:800">https://hr-advisory-group-ai.vercel.app/</a>
+          — the original Employee Relations / HR Advisory concept.
         </div>
-
         <div class="grid four">
           <div class="card metric"><div class="label">OPEN CASES</div><div class="value">12</div><div class="sub">Employee relations</div></div>
           <div class="card metric"><div class="label">HIGH RISK</div><div class="value">3</div><div class="sub">Escalation required</div></div>
           <div class="card metric"><div class="label">AWAITING INFO</div><div class="value">5</div><div class="sub">Clarification needed</div></div>
           <div class="card metric"><div class="label">DRAFTS TO REVIEW</div><div class="value">7</div><div class="sub">Human approval pending</div></div>
         </div>
-
+        <div class="feature-grid">
+          <div class="feature-tile" onclick="showToast('Complaint intake workflow opened')"><strong>Complaint Intake</strong><span>Capture workplace concerns, parties, dates, prior actions, and requested outcome.</span></div>
+          <div class="feature-tile" onclick="showToast('Investigation planner prepared')"><strong>Investigation Planner</strong><span>Create scope, evidence checklist, interview sequence, and question sets.</span></div>
+          <div class="feature-tile" onclick="showToast('Performance workflow opened')"><strong>Performance Review</strong><span>Structure coaching history, expectations, impact, and improvement steps.</span></div>
+          <div class="feature-tile" onclick="showToast('Corrective action checklist prepared')"><strong>Corrective Action</strong><span>Prepare consistency, documentation, policy, and approval checks.</span></div>
+          <div class="feature-tile" onclick="showToast('PIP support workspace opened')"><strong>PIP Support</strong><span>Draft measurable expectations, milestones, review dates, and support steps.</span></div>
+          <div class="feature-tile" onclick="showToast('Termination review workflow opened')"><strong>Termination Review</strong><span>Flag missing approvals, documentation gaps, and escalation requirements.</span></div>
+          <div class="feature-tile" onclick="showToast('Leave/accommodation routing opened')"><strong>Leave & Accommodation</strong><span>Route sensitive matters for appropriate human HR or legal review.</span></div>
+          <div class="feature-tile" onclick="showToast('Union-related review flag activated')"><strong>Union / CBA Review</strong><span>Flag potential collective-bargaining or representation considerations.</span></div>
+        </div>
         <div class="card" style="margin-top:18px">
           <div style="display:flex;justify-content:space-between;gap:15px;align-items:start">
-            <div>
-              <div style="font-size:11px;color:var(--muted);font-weight:800">CASE HR-2026-0142</div>
-              <h2 style="margin:5px 0 3px">Jordan Reyes — Attendance & Performance Concern</h2>
-              <p>Manager consultation · Operations · Maryland</p>
-            </div>
+            <div><div style="font-size:11px;color:var(--muted);font-weight:800">CASE HR-2026-0142</div><h2 style="margin:5px 0 3px">Jordan Reyes — Attendance & Performance Concern</h2><p>Manager consultation · Operations · Maryland</p></div>
             <span class="badge high">High Review</span>
           </div>
-
           <div class="risk-banner" style="margin-top:16px"><strong>AI risk flag:</strong> Attendance concerns may intersect with protected leave or accommodation. Confirm facts and policy context before any disciplinary action. Human HR review required.</div>
-
           <div class="facts" style="margin-top:15px">
             <div class="factcol"><h4>Confirmed Facts</h4><ul><li>Manager consultation submitted Aug. 17</li><li>Three documented late arrivals</li><li>Attendance policy is referenced</li></ul></div>
             <div class="factcol"><h4>Unverified Statements</h4><ul><li>Manager states performance declined</li><li>Employee reportedly mentioned a health concern</li><li>Team impact has not been quantified</li></ul></div>
             <div class="factcol"><h4>Missing Information</h4><ul><li>Prior coaching documentation</li><li>Applicable leave/accommodation status</li><li>Employee response and timeline</li></ul></div>
           </div>
-
           <div class="grid two">
-            <div class="ai-box">
-              <h4>Recommended Clarifying Questions</h4>
-              <ul><li>Has the employee requested leave or an accommodation?</li><li>What prior coaching or notice has been documented?</li><li>Are attendance expectations applied consistently?</li><li>What specific performance impact has been observed?</li></ul>
-            </div>
-            <div class="ai-box">
-              <h4>Draft Work Product</h4>
-              <p><strong>Status:</strong> Draft pending human review.</p>
-              <ul><li>Manager consultation summary</li><li>Factual timeline</li><li>Follow-up question set</li><li>Policy areas for HR review</li><li>Next-step checklist</li></ul>
-            </div>
+            <div class="ai-box"><h4>Recommended Clarifying Questions</h4><ul><li>Has the employee requested leave or an accommodation?</li><li>What prior coaching or notice has been documented?</li><li>Are attendance expectations applied consistently?</li><li>What specific performance impact has been observed?</li></ul></div>
+            <div class="ai-box"><h4>Draft Work Product</h4><p><strong>Status:</strong> Draft pending human review.</p><ul><li>Manager consultation summary</li><li>Factual timeline</li><li>Follow-up question set</li><li>Policy areas for HR review</li><li>Next-step checklist</li></ul></div>
           </div>
-
           <div class="toolbar" style="margin-top:15px">
             <button class="btn secondary" onclick="showToast('Draft advisory summary generated')">Generate Advisory Draft</button>
             <button class="btn warn" onclick="showToast('Escalation routed for human review')">Escalate for Review</button>
             <button class="btn primary" onclick="openModal('approvalModal')">Human Review</button>
+          </div>
+        </div>
+        <div class="workflow-panel">
+          <h3>Case Workflow</h3>
+          <p>Intake → classification → clarification → fact organization → drafting → risk review → approvals → delivery → follow-up tracking.</p>
+          <div class="mini-actions">
+            <button class="mini-btn" onclick="showToast('Timeline generated')">Generate Timeline</button>
+            <button class="mini-btn" onclick="showToast('Interview question set prepared')">Interview Questions</button>
+            <button class="mini-btn" onclick="showToast('Manager talking points prepared')">Manager Talking Points</button>
+            <button class="mini-btn" onclick="showToast('Follow-up tracker opened')">Follow-Up Tracker</button>
           </div>
         </div>
       </section>
@@ -345,17 +373,25 @@
       <!-- COMPENSATION -->
       <section id="compensation" class="view">
         <div class="section-title">
-          <div><h1>Compensation & Benefits</h1><p>Structured analysis for compensation philosophy, pay architecture, and total rewards.</p></div>
+          <div><h1>Compensation & Benefits</h1><p>Structured analysis for compensation philosophy, salary architecture, internal equity, and total rewards.</p></div>
           <button class="btn primary" onclick="openModal('compModal')">New Compensation Review</button>
         </div>
-
         <div class="grid four">
           <div class="card metric"><div class="label">POSITIONS REVIEWED</div><div class="value">46</div><div class="sub">Demo dataset</div></div>
           <div class="card metric"><div class="label">PAY COMPRESSION FLAGS</div><div class="value">5</div><div class="sub">Human analysis needed</div></div>
           <div class="card metric"><div class="label">BENEFIT COST / FTE</div><div class="value">$14.8K</div><div class="sub">Illustrative</div></div>
           <div class="card metric"><div class="label">OPEN REVIEWS</div><div class="value">4</div><div class="sub">2 executive-level</div></div>
         </div>
-
+        <div class="feature-grid">
+          <div class="feature-tile" onclick="showToast('Compensation philosophy builder opened')"><strong>Compensation Philosophy</strong><span>Define market position, internal equity principles, and decision criteria.</span></div>
+          <div class="feature-tile" onclick="showToast('Salary structure workspace opened')"><strong>Salary Structures</strong><span>Review ranges, grades, progression, and market positioning.</span></div>
+          <div class="feature-tile" onclick="showToast('Pay compression analysis prepared')"><strong>Pay Compression</strong><span>Identify potential compression requiring compensation review.</span></div>
+          <div class="feature-tile" onclick="showToast('Internal equity review opened')"><strong>Internal Equity</strong><span>Compare similarly situated roles using approved employer data.</span></div>
+          <div class="feature-tile" onclick="showToast('Merit scenario model opened')"><strong>Merit Modeling</strong><span>Model budget scenarios and increase distributions for human review.</span></div>
+          <div class="feature-tile" onclick="showToast('Promotion increase model opened')"><strong>Promotion Modeling</strong><span>Explore promotion adjustments against ranges and internal equity.</span></div>
+          <div class="feature-tile" onclick="showToast('Benefits comparison prepared')"><strong>Benefits Comparison</strong><span>Compare illustrative plan costs and total rewards components.</span></div>
+          <div class="feature-tile" onclick="showToast('Total rewards statement prepared')"><strong>Total Rewards</strong><span>Assemble salary, benefits, incentives, and employer-paid value.</span></div>
+        </div>
         <div class="grid two">
           <div class="card">
             <h3>Operations Pay Structure Review</h3>
@@ -365,76 +401,69 @@
               <label>Current Range<input value="$58,000 – $74,000"></label>
               <label>Illustrative Benchmark<input value="$62,000 – $82,000"></label>
             </div>
-            <div class="ai-box" style="margin-top:14px">
-              <h4>AI-assisted observation</h4>
-              <p>Current upper range trails the illustrative benchmark and may contribute to compression between experienced incumbents and new hires. Validate market data, internal equity, budget, and compensation philosophy before changes are recommended.</p>
-            </div>
+            <div class="ai-box" style="margin-top:14px"><h4>AI-assisted observation</h4><p>Current upper range trails the illustrative benchmark and may contribute to compression between experienced incumbents and new hires. Validate market data, internal equity, budget, and compensation philosophy before changes are recommended.</p></div>
+            <div class="mini-actions"><button class="mini-btn" onclick="showToast('Range analysis prepared')">Analyze Range</button><button class="mini-btn" onclick="showToast('Internal equity checklist prepared')">Equity Checklist</button><button class="mini-btn" onclick="showToast('Budget impact scenario prepared')">Budget Impact</button></div>
           </div>
           <div class="card">
             <h3>Total Rewards Comparison</h3>
             <div class="chart">
-              <div class="bar" style="height:72%" data-label="Salary" data-value="$72K"></div>
-              <div class="bar" style="height:15%" data-label="Health" data-value="$15K"></div>
-              <div class="bar" style="height:6%" data-label="Retirement" data-value="$6K"></div>
-              <div class="bar" style="height:4%" data-label="Bonus" data-value="$4K"></div>
-              <div class="bar" style="height:3%" data-label="Other" data-value="$3K"></div>
+              <div class="bar" style="height:72%" data-label="Salary" data-value="$72K"></div><div class="bar" style="height:15%" data-label="Health" data-value="$15K"></div><div class="bar" style="height:6%" data-label="Retirement" data-value="$6K"></div><div class="bar" style="height:4%" data-label="Bonus" data-value="$4K"></div><div class="bar" style="height:3%" data-label="Other" data-value="$3K"></div>
             </div>
             <div class="callout" style="margin-top:30px">Illustrative values only. Production analysis would use authorized employer data and approved market sources.</div>
             <div class="toolbar" style="margin-top:14px"><button class="btn secondary" onclick="showToast('Compensation summary prepared for review')">Prepare Review Memo</button></div>
           </div>
+        </div>
+        <div class="workflow-panel">
+          <h3>Compensation Workflow</h3>
+          <p>Business question → data validation → range/equity review → scenario modeling → cost analysis → draft recommendation → human approval.</p>
+          <div class="mini-actions"><button class="mini-btn" onclick="showToast('Compensation philosophy draft prepared')">Philosophy Draft</button><button class="mini-btn" onclick="showToast('Merit budget model prepared')">Merit Budget</button><button class="mini-btn" onclick="showToast('Promotion analysis prepared')">Promotion Review</button><button class="mini-btn" onclick="showToast('Executive compensation memo prepared')">Executive Memo</button></div>
         </div>
       </section>
 
       <!-- STRATEGY -->
       <section id="strategy" class="view">
         <div class="section-title">
-          <div><h1>Organizational Strategy</h1><p>Human-capital strategy, organizational restructuring, and cost scenario planning.</p></div>
+          <div><h1>Organizational Strategy</h1><p>Human-capital strategy, organizational restructuring, workforce capacity, succession, and cost scenario planning.</p></div>
           <button class="btn primary" onclick="openModal('strategyModal')">New Strategy Scenario</button>
         </div>
-
         <div class="grid four">
           <div class="card metric"><div class="label">CURRENT HEADCOUNT</div><div class="value">128</div><div class="sub">Illustrative company</div></div>
           <div class="card metric"><div class="label">ANNUAL PEOPLE COST</div><div class="value">$11.4M</div><div class="sub">Illustrative baseline</div></div>
           <div class="card metric"><div class="label">SPAN FLAGS</div><div class="value">6</div><div class="sub">Manager review needed</div></div>
           <div class="card metric"><div class="label">SCENARIOS</div><div class="value">3</div><div class="sub">No action taken automatically</div></div>
         </div>
-
-        <div class="grid three">
-          <div class="scenario">
-            <span class="badge blue">Baseline</span><h4>Current Structure</h4>
-            <p>128 employees · 21 managers</p><div class="money">$11.4M</div><p>Estimated annual people cost</p>
-          </div>
-          <div class="scenario">
-            <span class="badge purple">Scenario A</span><h4>Layer Simplification</h4>
-            <p>Consolidate selected management layers</p><div class="money">$620K</div><p>Illustrative annual cost difference</p>
-          </div>
-          <div class="scenario">
-            <span class="badge med">Scenario B</span><h4>Shared Services Model</h4>
-            <p>Centralize selected support functions</p><div class="money">$410K</div><p>Illustrative annual cost difference</p>
-          </div>
+        <div class="feature-grid">
+          <div class="feature-tile" onclick="showToast('Org chart workspace opened')"><strong>Org Chart Builder</strong><span>Map reporting relationships, layers, teams, and critical roles.</span></div>
+          <div class="feature-tile" onclick="showToast('Span-of-control analysis prepared')"><strong>Span of Control</strong><span>Flag unusually narrow or broad spans for leadership review.</span></div>
+          <div class="feature-tile" onclick="showToast('Role overlap analysis prepared')"><strong>Role Overlap</strong><span>Identify potentially duplicative responsibilities across teams.</span></div>
+          <div class="feature-tile" onclick="showToast('Restructuring scenarios prepared')"><strong>Restructuring</strong><span>Model alternative structures without making autonomous workforce decisions.</span></div>
+          <div class="feature-tile" onclick="showToast('Succession planning workspace opened')"><strong>Succession Planning</strong><span>Identify critical roles, readiness gaps, and development needs.</span></div>
+          <div class="feature-tile" onclick="showToast('Skills gap analysis prepared')"><strong>Skills Gap Analysis</strong><span>Compare future capability requirements with current workforce skills.</span></div>
+          <div class="feature-tile" onclick="showToast('Growth workforce model opened')"><strong>Growth Modeling</strong><span>Estimate hiring needs under business growth scenarios.</span></div>
+          <div class="feature-tile" onclick="showToast('Shared services scenario prepared')"><strong>Shared Services</strong><span>Explore centralization opportunities and operational tradeoffs.</span></div>
         </div>
-
+        <div class="grid three">
+          <div class="scenario"><span class="badge blue">Baseline</span><h4>Current Structure</h4><p>128 employees · 21 managers</p><div class="money">$11.4M</div><p>Estimated annual people cost</p></div>
+          <div class="scenario"><span class="badge purple">Scenario A</span><h4>Layer Simplification</h4><p>Consolidate selected management layers</p><div class="money">$620K</div><p>Illustrative annual cost difference</p></div>
+          <div class="scenario"><span class="badge med">Scenario B</span><h4>Shared Services Model</h4><p>Centralize selected support functions</p><div class="money">$410K</div><p>Illustrative annual cost difference</p></div>
+        </div>
         <div class="grid two">
           <div class="card">
             <h3>AI-Assisted Organization Review</h3>
-            <div class="ai-box" style="margin-top:12px">
-              <h4>Potential discussion areas</h4>
-              <ul><li>Three teams have manager spans below 3 direct reports.</li><li>Two support roles show overlapping responsibilities.</li><li>Customer Success has a high span of control and elevated turnover.</li><li>Any restructuring recommendation requires leadership, HR, financial, and legal review.</li></ul>
-            </div>
+            <div class="ai-box" style="margin-top:12px"><h4>Potential discussion areas</h4><ul><li>Three teams have manager spans below 3 direct reports.</li><li>Two support roles show overlapping responsibilities.</li><li>Customer Success has a high span of control and elevated turnover.</li><li>Any restructuring recommendation requires leadership, HR, financial, and legal review.</li></ul></div>
             <div class="toolbar" style="margin-top:14px"><button class="btn secondary" onclick="showToast('Executive strategy brief generated')">Generate Strategy Brief</button></div>
           </div>
           <div class="card">
             <h3>Scenario Decision Framework</h3>
-            <table>
-              <thead><tr><th>Factor</th><th>Baseline</th><th>Scenario A</th><th>Scenario B</th></tr></thead>
-              <tbody>
-                <tr><td>Estimated cost</td><td>$11.4M</td><td>$10.78M</td><td>$10.99M</td></tr>
-                <tr><td>Change complexity</td><td>Low</td><td>High</td><td>Moderate</td></tr>
-                <tr><td>Employee impact</td><td>Low</td><td>High</td><td>Moderate</td></tr>
-                <tr><td>Human review</td><td>—</td><td>Required</td><td>Required</td></tr>
-              </tbody>
+            <table><thead><tr><th>Factor</th><th>Baseline</th><th>Scenario A</th><th>Scenario B</th></tr></thead>
+              <tbody><tr><td>Estimated cost</td><td>$11.4M</td><td>$10.78M</td><td>$10.99M</td></tr><tr><td>Change complexity</td><td>Low</td><td>High</td><td>Moderate</td></tr><tr><td>Employee impact</td><td>Low</td><td>High</td><td>Moderate</td></tr><tr><td>Human review</td><td>—</td><td>Required</td><td>Required</td></tr></tbody>
             </table>
           </div>
+        </div>
+        <div class="workflow-panel">
+          <h3>Strategy Workflow</h3>
+          <p>Business objective → current-state mapping → structure/cost analysis → scenario modeling → risk review → executive recommendation → human decision.</p>
+          <div class="mini-actions"><button class="mini-btn" onclick="showToast('Org chart analysis prepared')">Org Chart Review</button><button class="mini-btn" onclick="showToast('Succession matrix prepared')">Succession Matrix</button><button class="mini-btn" onclick="showToast('Skills gap report prepared')">Skills Gap Report</button><button class="mini-btn" onclick="showToast('Executive decision brief prepared')">Decision Brief</button></div>
         </div>
       </section>
 
