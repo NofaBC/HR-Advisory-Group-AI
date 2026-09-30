@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>HR Advisory Group AI™ — Phase 1 Workspace</title>
+<title>HR Advisory Group Assistant™ — Phase 1 Workspace</title>
 <style>
 :root{
-  --navy:#0d1b2a; --navy2:#14263a; --ink:#192434; --muted:#687386; --line:#dfe5ec;
-  --soft:#f5f7fa; --card:#fff; --accent:#2b6cb0; --success:#1f7a5c; --warn:#9b6a00;
-  --risk:#a33d3d; --purple:#6b57a8; --shadow:0 12px 30px rgba(13,27,42,.08);
+ --navy:#0d1b2a; --navy2:#14263a; --ink:#192434; --muted:#687386; --line:#dfe5ec;
+ --soft:#f5f7fa; --card:#fff; --accent:#2b6cb0; --success:#1f7a5c; --warn:#9b6a00;
+ --risk:#a33d3d; --purple:#6b57a8; --shadow:0 12px 30px rgba(13,27,42,.08);
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:#eef2f6;color:var(--ink)}
@@ -73,243 +73,365 @@ textarea{min-height:100px;resize:vertical}
 .toast{position:fixed;right:24px;bottom:24px;background:#14263a;color:#fff;padding:12px 15px;border-radius:11px;display:none;z-index:120;box-shadow:var(--shadow);font-size:13px}.toast.show{display:block}
 @media(max-width:1100px){.grid.four,.feature-grid{grid-template-columns:1fr 1fr}.grid.three{grid-template-columns:1fr 1fr}.app{grid-template-columns:220px 1fr}}
 @media(max-width:760px){.app{display:block}.sidebar{height:auto;position:relative}.sidebar-footer{display:none}.nav{grid-template-columns:1fr 1fr}.topbar{position:relative}.grid.four,.grid.three,.grid.two,.feature-grid,.form-grid{grid-template-columns:1fr}.hero{display:block}.assistant{margin-top:15px}.content{padding:18px}.weekly-item{grid-template-columns:1fr}}
+
+.doc-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+.doc-btn{border:1px solid var(--line);background:#f8fafc;color:#29445e;border-radius:8px;padding:7px 9px;font-size:10.5px;font-weight:800;cursor:pointer}
+.doc-btn:hover{background:#eef4f8}
+.doc-btn.upload{background:#edf5fc;border-color:#c9ddef;color:#245987}
+.doc-context{margin-top:10px;padding:9px 11px;border-radius:9px;background:#f7f9fb;border:1px dashed #cbd5df;font-size:11px;color:#59697a}
+
 </style>
 </head>
 <body>
 <div class="app">
 <aside class="sidebar">
-  <div class="brand">
-    <div class="name">HR Advisory Group AI™</div>
-    <div class="tag">Integrated HR Advisory Platform<br>Assistant-supported workflows. Human-controlled decisions.</div>
-  </div>
-  <div class="nav">
-    <button class="active" data-view="phase1">Phase 1 Workspace<small>Omnisource operating command center</small></button>
-    <button data-view="overview">Platform Overview<small>Four-module architecture</small></button>
-    <button data-view="talent">Recruitment & Retention<small>Talent intelligence</small></button>
-    <button data-view="employee">Employee Relations<small>Cases & performance</small></button>
-    <button data-view="comp">Compensation & Benefits<small>Pay & total rewards</small></button>
-    <button data-view="strategy">Organizational Strategy<small>Structure & cost scenarios</small></button>
-    <button data-view="policy">Policy Library<small>Shared policy intelligence</small></button>
-  </div>
-  <div class="sidebar-footer">Phase 1 prototype · Project data based on current planning documents<br>Assistant-prepared drafts require human review</div>
+ <div class="brand">
+ <div class="name">HR Advisory Group Assistant™</div>
+ <div class="tag">Integrated HR Advisory Platform<br>Assistant-supported workflows. Human-controlled decisions.</div>
+ </div>
+ <div class="nav">
+ <button class="active" data-view="phase1">Phase 1 Workspace<small>Client operating command center</small></button>
+ <button data-view="clients">Client Workspaces<small>Multi-client documents & knowledge</small></button>
+ <button data-view="overview">Platform Overview<small>Four-module architecture</small></button>
+ <button data-view="talent">Recruitment & Retention<small>Talent intelligence</small></button>
+ <button data-view="employee">Employee Relations<small>Cases & performance</small></button>
+ <button data-view="comp">Compensation & Benefits<small>Pay & total rewards</small></button>
+ <button data-view="strategy">Organizational Strategy<small>Structure & cost scenarios</small></button>
+ <button data-view="policy">Policy Library<small>Shared policy intelligence</small></button>
+ </div>
+ <div class="sidebar-footer">Phase 1 prototype · Project data based on current planning documents<br>Assistant-prepared drafts require human review</div>
 </aside>
 
 <main class="main">
 <header class="topbar">
-  <div class="top-title">HR Advisory Group AI™</div>
-  <div class="chips"><span class="chip live">Phase 1 Ready</span><span class="chip">Human Review Required</span></div>
+ <div class="top-title">HR Advisory Group Assistant™</div>
+ <div class="chips"><span class="chip live">Phase 1 Ready</span><span class="chip">Human Review Required</span></div>
 </header>
 
 <div class="content">
 
 <section id="phase1" class="view active">
-  <div class="hero">
-    <div>
-      <h1>Phase 1 — HR Foundation & Operating Command Center</h1>
-      <p>A working prototype based on Dr. Patton’s current Omnisource engagement: 18 active workstreams, staffing and hiring priorities, HR/payroll platform evaluation, benefits, policies, IT/security, background checks, and weekly follow-up management.</p>
-    </div>
-    <div class="assistant">Your Assistant organizes.<br>Dr. Patton decides.</div>
-  </div>
+ <div class="hero">
+ <div>
+ <h1>Phase 1 — HR Foundation & Operating Command Center</h1>
+ <p>A working prototype that begins with Dr. Patton’s current Omnisource engagement while supporting additional client workspaces, client-specific document libraries, isolated Assistant knowledge, workstreams, policies, and weekly follow-up management.</p>
+ </div>
+ <div class="assistant">Your Assistant organizes.<br>Dr. Patton decides.</div>
+ </div>
 
-  <div class="grid four">
-    <div class="card metric"><div class="label">ACTIVE WORKSTREAMS</div><div class="value">18</div><div class="sub">Weekly operating agenda</div></div>
-    <div class="card metric"><div class="label">DECISIONS NEEDED</div><div class="value">4</div><div class="sub">Current priority decisions</div></div>
-    <div class="card metric"><div class="label">IN PROGRESS</div><div class="value">8</div><div class="sub">Across Phase 1 work</div></div>
-    <div class="card metric"><div class="label">NEXT REVIEW</div><div class="value">Sep 30</div><div class="sub">Weekly decision meeting</div></div>
-  </div>
+ <div class="grid four">
+ <div class="card metric"><div class="label">ACTIVE WORKSTREAMS</div><div class="value">18</div><div class="sub">Weekly operating agenda</div></div>
+ <div class="card metric"><div class="label">DECISIONS NEEDED</div><div class="value">4</div><div class="sub">Current priority decisions</div></div>
+ <div class="card metric"><div class="label">IN PROGRESS</div><div class="value">8</div><div class="sub">Across Phase 1 work</div></div>
+ <div class="card metric"><div class="label">NEXT REVIEW</div><div class="value">Sep 30</div><div class="sub">Weekly decision meeting</div></div>
+ </div>
 
-  <div class="grid two">
-    <div class="card">
-      <h3>Assistant Briefing</h3>
-      <div class="assistant-box" style="margin-top:12px">
-        <h4>What needs attention first</h4>
-        <ul>
-          <li>Confirm contract signature and immediate payment status.</li>
-          <li>Resolve the initial chief-of-staff structure and first-wave staffing priorities.</li>
-          <li>Finalize HR/payroll/HRIS requirements and assign the vendor-evaluation owner.</li>
-          <li>Confirm benefits scope, interim coverage, and the self-insurance decision path.</li>
-          <li>Continue remote-work policy and employee handbook development.</li>
-        </ul>
-      </div>
-      <div class="toolbar" style="margin-top:14px">
-        <button class="btn secondary" onclick="showToast('Weekly briefing prepared')">Prepare Weekly Brief</button>
-        <button class="btn primary" onclick="showToast('Decision summary prepared for Dr. Patton')">Prepare Decision Summary</button>
-      </div>
-    </div>
+ <div class="grid two">
+ <div class="card">
+ <h3>Assistant Briefing</h3>
+ <div class="assistant-box" style="margin-top:12px">
+ <h4>What needs attention first</h4>
+ <ul>
+ <li>Confirm contract signature and immediate payment status.</li>
+ <li>Resolve the initial chief-of-staff structure and first-wave staffing priorities.</li>
+ <li>Finalize HR/payroll/HRIS requirements and assign the vendor-evaluation owner.</li>
+ <li>Confirm benefits scope, interim coverage, and the self-insurance decision path.</li>
+ <li>Continue remote-work policy and employee handbook development.</li>
+ </ul>
+ </div>
+ <div class="toolbar" style="margin-top:14px">
+ <button class="btn secondary" onclick="showToast('Weekly briefing prepared')">Prepare Weekly Brief</button>
+ <button class="btn primary" onclick="showToast('Decision summary prepared for Dr. Patton')">Prepare Decision Summary</button>
+ </div>
+ </div>
 
-    <div class="card">
-      <h3>Phase 1 Functional Areas</h3>
-      <div class="feature-grid" style="grid-template-columns:1fr 1fr">
-        <div class="feature" onclick="showToast('Staffing workspace opened')"><strong>Workforce Setup</strong><span>Priority roles, job levels, hiring sequence, chief-of-staff design, onboarding.</span></div>
-        <div class="feature" onclick="showToast('HR infrastructure workspace opened')"><strong>HR Infrastructure</strong><span>HRIS, payroll, benefits, recruiting, timekeeping, reporting, vendor evaluation.</span></div>
-        <div class="feature" onclick="showToast('Policy workspace opened')"><strong>Policy & Compliance</strong><span>Handbook, remote work, device responsibility, background checks, approval workflow.</span></div>
-        <div class="feature" onclick="showToast('Weekly command workspace opened')"><strong>Weekly Action Command</strong><span>Owners, statuses, due dates, blockers, next steps, and meeting follow-up.</span></div>
-      </div>
-    </div>
-  </div>
+ <div class="card">
+ <h3>Phase 1 Functional Areas</h3>
+ <div class="feature-grid" style="grid-template-columns:1fr 1fr">
+ <div class="feature" onclick="switchView('clients')"><strong>Client Workspace</strong><span>Create/select a client and keep documents, workstreams, policies, and Assistant knowledge separate.</span></div>
+ <div class="feature" onclick="switchView('clients')"><strong>Knowledge & Document Library</strong><span>Upload, categorize, replace, deactivate, and manage client-specific source documents.</span></div>
+ <div class="feature" onclick="showToast('Staffing workspace opened')"><strong>Workforce Setup</strong><span>Priority roles, job levels, hiring sequence, chief-of-staff design, onboarding.</span></div>
+ <div class="feature" onclick="showToast('HR infrastructure workspace opened')"><strong>HR Infrastructure</strong><span>HRIS, payroll, benefits, recruiting, timekeeping, reporting, vendor evaluation.</span></div>
+ <div class="feature" onclick="showToast('Policy workspace opened')"><strong>Policy & Compliance</strong><span>Handbook, remote work, device responsibility, background checks, approval workflow.</span></div>
+ <div class="feature" onclick="showToast('Weekly command workspace opened')"><strong>Weekly Action Command</strong><span>Owners, statuses, due dates, blockers, next steps, and meeting follow-up.</span></div>
+ </div>
+ </div>
+ </div>
 
-  <div class="card" style="margin-top:18px">
-    <div class="section-title" style="margin-bottom:0">
-      <div><h1 style="font-size:20px">Weekly Agenda & Action Tracker</h1><p>Live operating view for the 18 priority workstreams.</p></div>
-      <div class="toolbar"><button class="btn outline" onclick="showToast('Tracker export prepared')">Export Tracker</button><button class="btn primary" onclick="openModal('updateModal')">Add Weekly Update</button></div>
-    </div>
-    <div class="filters">
-      <button class="active" onclick="filterRows('all',this)">All</button>
-      <button onclick="filterRows('In Progress',this)">In Progress</button>
-      <button onclick="filterRows('Decision Needed',this)">Decision Needed</button>
-      <button onclick="filterRows('Not Started',this)">Not Started</button>
-    </div>
-    <div class="table-wrap">
-      <table id="tracker">
-        <thead><tr><th>#</th><th>Workstream</th><th>Owner</th><th>Next Action</th><th>Status</th><th>Due</th></tr></thead>
-        <tbody>
-          <tr data-status="In Progress"><td>1</td><td><strong>Contract & Immediate Payment</strong></td><td>Jorie</td><td>Sign/send contract; confirm payment issuance</td><td><span class="badge progress">In Progress</span></td><td>Sep 30</td></tr>
-          <tr data-status="Decision Needed"><td>2</td><td><strong>Chief-of-Staff Structure</strong></td><td>To assign</td><td>Define initial model, scope, reporting line, budget</td><td><span class="badge decision">Decision Needed</span></td><td>Sep 30</td></tr>
-          <tr data-status="Decision Needed"><td>3</td><td><strong>Initial Organizational Staffing</strong></td><td>To assign</td><td>Confirm priority roles, levels, locations, sequence</td><td><span class="badge decision">Decision Needed</span></td><td>Sep 30</td></tr>
-          <tr data-status="In Progress"><td>4</td><td><strong>Property Acquisition & Hiring Timing</strong></td><td>Jorie</td><td>Align acquisition timeline with facilities hiring</td><td><span class="badge progress">In Progress</span></td><td>Oct 7</td></tr>
-          <tr data-status="In Progress"><td>5</td><td><strong>HR & Payroll Platform Evaluation</strong></td><td>To assign</td><td>Document requirements; obtain vendor proposals</td><td><span class="badge progress">In Progress</span></td><td>Oct 7</td></tr>
-          <tr data-status="Not Started"><td>6</td><td><strong>Vendor Comparison & Payroll Risk</strong></td><td>Charmion</td><td>Create comparison matrix and risk controls</td><td><span class="badge notstarted">Not Started</span></td><td>Oct 7</td></tr>
-          <tr data-status="In Progress"><td>7</td><td><strong>Integrated Payroll, HRIS & IT</strong></td><td>Jorie / Charmion</td><td>Confirm integration requirements and support expectations</td><td><span class="badge progress">In Progress</span></td><td>Oct 7</td></tr>
-          <tr data-status="Not Started"><td>8</td><td><strong>Vendor Evaluation & International Payroll</strong></td><td>Charmion</td><td>Prepare RFP; vet vendors; schedule demos</td><td><span class="badge notstarted">Not Started</span></td><td>Oct 14</td></tr>
-          <tr data-status="Decision Needed"><td>9</td><td><strong>Benefits Scope & Executive Coverage</strong></td><td>To assign</td><td>Confirm scope, priorities, and budget assumptions</td><td><span class="badge decision">Decision Needed</span></td><td>Sep 30</td></tr>
-          <tr data-status="In Progress"><td>10</td><td><strong>Fully Insured vs. Self-Insured</strong></td><td>Charmion</td><td>Develop options analysis and recommendation</td><td><span class="badge progress">In Progress</span></td><td>Oct 14</td></tr>
-          <tr data-status="Decision Needed"><td>11</td><td><strong>Benefits Administration & Cost Management</strong></td><td>Jorie</td><td>Define self-insurance operating model and resources</td><td><span class="badge decision">Decision Needed</span></td><td>Sep 30</td></tr>
-          <tr data-status="In Progress"><td>12</td><td><strong>Interim Benefits & Employee Coverage</strong></td><td>Jorie / Charmion</td><td>Set interim benefits budget; confirm required coverages</td><td><span class="badge progress">In Progress</span></td><td>Oct 7</td></tr>
-          <tr data-status="In Progress"><td>13</td><td><strong>Remote-Work Policy & Employee Handbook</strong></td><td>Charmion</td><td>Draft remote-work policy and handbook outline</td><td><span class="badge progress">In Progress</span></td><td>Oct 14</td></tr>
-          <tr data-status="Not Started"><td>14</td><td><strong>Outsourced IT & Security Infrastructure</strong></td><td>Jorie</td><td>Define requirements and identify providers</td><td><span class="badge notstarted">Not Started</span></td><td>Oct 14</td></tr>
-          <tr data-status="Not Started"><td>15</td><td><strong>Device Management & New-Hire Access</strong></td><td>To assign</td><td>Draft equipment language; define provisioning workflow</td><td><span class="badge notstarted">Not Started</span></td><td>Oct 14</td></tr>
-          <tr data-status="Not Started"><td>16</td><td><strong>Domestic & International Background Checks</strong></td><td>To assign</td><td>Select providers and define screening standard</td><td><span class="badge notstarted">Not Started</span></td><td>Oct 21</td></tr>
-          <tr data-status="In Progress"><td>17</td><td><strong>Workstream Tracking & Project Assessment</strong></td><td>Charmion / Jorie / Yvonne</td><td>Set assessment meeting and dashboard cadence</td><td><span class="badge progress">In Progress</span></td><td>Sep 30</td></tr>
-          <tr data-status="Not Started"><td>18</td><td><strong>Chief-of-Staff Capacity & Onboarding</strong></td><td>To assign</td><td>Write role definition and onboarding plan</td><td><span class="badge notstarted">Not Started</span></td><td>Oct 21</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+ <div class="card" style="margin-top:18px">
+ <div class="section-title" style="margin-bottom:0">
+ <div><h1 style="font-size:20px">Weekly Agenda & Action Tracker</h1><p>Live operating view for the 18 priority workstreams.</p></div>
+ <div class="toolbar"><button class="btn outline" onclick="showToast('Tracker export prepared')">Export Tracker</button><button class="btn primary" onclick="openModal('updateModal')">Add Weekly Update</button></div>
+ </div>
+ <div class="filters">
+ <button class="active" onclick="filterRows('all',this)">All</button>
+ <button onclick="filterRows('In Progress',this)">In Progress</button>
+ <button onclick="filterRows('Decision Needed',this)">Decision Needed</button>
+ <button onclick="filterRows('Not Started',this)">Not Started</button>
+ </div>
+ <div class="table-wrap">
+ <table id="tracker">
+ <thead><tr><th>#</th><th>Workstream</th><th>Owner</th><th>Next Action</th><th>Status</th><th>Due</th></tr></thead>
+ <tbody>
+ <tr data-status="In Progress"><td>1</td><td><strong>Contract & Immediate Payment</strong></td><td>Jorie</td><td>Sign/send contract; confirm payment issuance</td><td><span class="badge progress">In Progress</span></td><td>Sep 30</td></tr>
+ <tr data-status="Decision Needed"><td>2</td><td><strong>Chief-of-Staff Structure</strong></td><td>To assign</td><td>Define initial model, scope, reporting line, budget</td><td><span class="badge decision">Decision Needed</span></td><td>Sep 30</td></tr>
+ <tr data-status="Decision Needed"><td>3</td><td><strong>Initial Organizational Staffing</strong></td><td>To assign</td><td>Confirm priority roles, levels, locations, sequence</td><td><span class="badge decision">Decision Needed</span></td><td>Sep 30</td></tr>
+ <tr data-status="In Progress"><td>4</td><td><strong>Property Acquisition & Hiring Timing</strong></td><td>Jorie</td><td>Align acquisition timeline with facilities hiring</td><td><span class="badge progress">In Progress</span></td><td>Oct 7</td></tr>
+ <tr data-status="In Progress"><td>5</td><td><strong>HR & Payroll Platform Evaluation</strong></td><td>To assign</td><td>Document requirements; obtain vendor proposals</td><td><span class="badge progress">In Progress</span></td><td>Oct 7</td></tr>
+ <tr data-status="Not Started"><td>6</td><td><strong>Vendor Comparison & Payroll Risk</strong></td><td>Charmion</td><td>Create comparison matrix and risk controls</td><td><span class="badge notstarted">Not Started</span></td><td>Oct 7</td></tr>
+ <tr data-status="In Progress"><td>7</td><td><strong>Integrated Payroll, HRIS & IT</strong></td><td>Jorie / Charmion</td><td>Confirm integration requirements and support expectations</td><td><span class="badge progress">In Progress</span></td><td>Oct 7</td></tr>
+ <tr data-status="Not Started"><td>8</td><td><strong>Vendor Evaluation & International Payroll</strong></td><td>Charmion</td><td>Prepare RFP; vet vendors; schedule demos</td><td><span class="badge notstarted">Not Started</span></td><td>Oct 14</td></tr>
+ <tr data-status="Decision Needed"><td>9</td><td><strong>Benefits Scope & Executive Coverage</strong></td><td>To assign</td><td>Confirm scope, priorities, and budget assumptions</td><td><span class="badge decision">Decision Needed</span></td><td>Sep 30</td></tr>
+ <tr data-status="In Progress"><td>10</td><td><strong>Fully Insured vs. Self-Insured</strong></td><td>Charmion</td><td>Develop options analysis and recommendation</td><td><span class="badge progress">In Progress</span></td><td>Oct 14</td></tr>
+ <tr data-status="Decision Needed"><td>11</td><td><strong>Benefits Administration & Cost Management</strong></td><td>Jorie</td><td>Define self-insurance operating model and resources</td><td><span class="badge decision">Decision Needed</span></td><td>Sep 30</td></tr>
+ <tr data-status="In Progress"><td>12</td><td><strong>Interim Benefits & Employee Coverage</strong></td><td>Jorie / Charmion</td><td>Set interim benefits budget; confirm required coverages</td><td><span class="badge progress">In Progress</span></td><td>Oct 7</td></tr>
+ <tr data-status="In Progress"><td>13</td><td><strong>Remote-Work Policy & Employee Handbook</strong></td><td>Charmion</td><td>Draft remote-work policy and handbook outline</td><td><span class="badge progress">In Progress</span></td><td>Oct 14</td></tr>
+ <tr data-status="Not Started"><td>14</td><td><strong>Outsourced IT & Security Infrastructure</strong></td><td>Jorie</td><td>Define requirements and identify providers</td><td><span class="badge notstarted">Not Started</span></td><td>Oct 14</td></tr>
+ <tr data-status="Not Started"><td>15</td><td><strong>Device Management & New-Hire Access</strong></td><td>To assign</td><td>Draft equipment language; define provisioning workflow</td><td><span class="badge notstarted">Not Started</span></td><td>Oct 14</td></tr>
+ <tr data-status="Not Started"><td>16</td><td><strong>Domestic & International Background Checks</strong></td><td>To assign</td><td>Select providers and define screening standard</td><td><span class="badge notstarted">Not Started</span></td><td>Oct 21</td></tr>
+ <tr data-status="In Progress"><td>17</td><td><strong>Workstream Tracking & Project Assessment</strong></td><td>Charmion / Jorie / Yvonne</td><td>Set assessment meeting and dashboard cadence</td><td><span class="badge progress">In Progress</span></td><td>Sep 30</td></tr>
+ <tr data-status="Not Started"><td>18</td><td><strong>Chief-of-Staff Capacity & Onboarding</strong></td><td>To assign</td><td>Write role definition and onboarding plan</td><td><span class="badge notstarted">Not Started</span></td><td>Oct 21</td></tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
 
-  <div class="grid two">
-    <div class="card">
-      <h3>September 30 Decision Meeting</h3>
-      <p>Focused agenda generated from current Phase 1 priorities.</p>
-      <div class="weekly-list" style="margin-top:14px">
-        <div class="weekly-item"><div class="time">9:00–9:10</div><div><strong>Contract, payment & priorities</strong><br><span>Confirm status and urgent blockers.</span></div><span class="badge progress">Open</span></div>
-        <div class="weekly-item"><div class="time">9:10–9:30</div><div><strong>Chief of Staff & initial staffing</strong><br><span>Decide structure, roles, levels, locations, sequence.</span></div><span class="badge decision">Decision</span></div>
-        <div class="weekly-item"><div class="time">9:38–10:10</div><div><strong>HRIS, payroll & vendor evaluation</strong><br><span>Finalize requirements and evaluation plan.</span></div><span class="badge progress">Review</span></div>
-        <div class="weekly-item"><div class="time">10:10–10:44</div><div><strong>Benefits strategy</strong><br><span>Coverage, self-insurance, interim approach.</span></div><span class="badge decision">Decision</span></div>
-        <div class="weekly-item"><div class="time">10:44–11:20</div><div><strong>Policies, IT, devices & screening</strong><br><span>Assign owners and delivery sequence.</span></div><span class="badge progress">Review</span></div>
-      </div>
-      <div class="toolbar" style="margin-top:14px"><button class="btn secondary" onclick="showToast('Meeting agenda prepared')">Prepare Meeting Agenda</button><button class="btn primary" onclick="showToast('Follow-up template prepared')">Prepare Follow-Up</button></div>
-    </div>
+ <div class="grid two">
+ <div class="card">
+ <h3>September 30 Decision Meeting</h3>
+ <p>Focused agenda generated from current Phase 1 priorities.</p>
+ <div class="weekly-list" style="margin-top:14px">
+ <div class="weekly-item"><div class="time">9:00–9:10</div><div><strong>Contract, payment & priorities</strong><br><span>Confirm status and urgent blockers.</span></div><span class="badge progress">Open</span></div>
+ <div class="weekly-item"><div class="time">9:10–9:30</div><div><strong>Chief of Staff & initial staffing</strong><br><span>Decide structure, roles, levels, locations, sequence.</span></div><span class="badge decision">Decision</span></div>
+ <div class="weekly-item"><div class="time">9:38–10:10</div><div><strong>HRIS, payroll & vendor evaluation</strong><br><span>Finalize requirements and evaluation plan.</span></div><span class="badge progress">Review</span></div>
+ <div class="weekly-item"><div class="time">10:10–10:44</div><div><strong>Benefits strategy</strong><br><span>Coverage, self-insurance, interim approach.</span></div><span class="badge decision">Decision</span></div>
+ <div class="weekly-item"><div class="time">10:44–11:20</div><div><strong>Policies, IT, devices & screening</strong><br><span>Assign owners and delivery sequence.</span></div><span class="badge progress">Review</span></div>
+ </div>
+ <div class="toolbar" style="margin-top:14px"><button class="btn secondary" onclick="showToast('Meeting agenda prepared')">Prepare Meeting Agenda</button><button class="btn primary" onclick="showToast('Follow-up template prepared')">Prepare Follow-Up</button></div>
+ </div>
 
-    <div class="card">
-      <h3>Assistant Actions</h3>
-      <div class="feature-grid" style="grid-template-columns:1fr 1fr">
-        <div class="feature" onclick="showToast('Owner gaps identified')"><strong>Find Owner Gaps</strong><span>Identify workstreams still showing “To assign.”</span></div>
-        <div class="feature" onclick="showToast('Due date risks summarized')"><strong>Due-Date Risk</strong><span>Surface near-term items without clear progress.</span></div>
-        <div class="feature" onclick="showToast('Vendor comparison framework prepared')"><strong>Vendor Matrix</strong><span>Prepare HRIS/payroll comparison criteria.</span></div>
-        <div class="feature" onclick="showToast('Handbook checklist prepared')"><strong>Policy Checklist</strong><span>Prepare handbook and remote-work policy checklist.</span></div>
-        <div class="feature" onclick="showToast('Benefits analysis framework prepared')"><strong>Benefits Analysis</strong><span>Structure fully insured vs. self-insured comparison.</span></div>
-        <div class="feature" onclick="showToast('Staffing sequence prepared')"><strong>Staffing Sequence</strong><span>Organize priority hiring and onboarding dependencies.</span></div>
-      </div>
-    </div>
-  </div>
+ <div class="card">
+ <h3>Assistant Actions</h3>
+ <div class="feature-grid" style="grid-template-columns:1fr 1fr">
+ <div class="feature" onclick="showToast('Owner gaps identified')"><strong>Find Owner Gaps</strong><span>Identify workstreams still showing “To assign.”</span></div>
+ <div class="feature" onclick="showToast('Due date risks summarized')"><strong>Due-Date Risk</strong><span>Surface near-term items without clear progress.</span></div>
+ <div class="feature" onclick="showToast('Vendor comparison framework prepared')"><strong>Vendor Matrix</strong><span>Prepare HRIS/payroll comparison criteria.</span></div>
+ <div class="feature" onclick="showToast('Handbook checklist prepared')"><strong>Policy Checklist</strong><span>Prepare handbook and remote-work policy checklist.</span></div>
+ <div class="feature" onclick="showToast('Benefits analysis framework prepared')"><strong>Benefits Analysis</strong><span>Structure fully insured vs. self-insured comparison.</span></div>
+ <div class="feature" onclick="showToast('Staffing sequence prepared')"><strong>Staffing Sequence</strong><span>Organize priority hiring and onboarding dependencies.</span></div>
+ </div>
+ </div>
+ </div>
+</section>
+
+
+<section id="clients" class="view">
+ <div class="section-title">
+ <div>
+ <h1>Client Workspaces</h1>
+ <p>Each client has its own document library, Assistant knowledge boundary, workstreams, policy set, and operating history.</p>
+ </div>
+ <div class="toolbar">
+ <button class="btn primary" onclick="openModal('clientModal')">+ New Client</button>
+ </div>
+ </div>
+
+ <div class="hero">
+ <div>
+ <h1 style="font-size:24px">Client-Specific Knowledge Isolation</h1>
+ <p>The Assistant uses only the approved documents assigned to the selected client workspace. Omnisource materials remain separate from every other client’s policies, payroll documents, benefits information, forms, and procedures.</p>
+ </div>
+ <div class="assistant">Selected Client<br><strong id="selectedClientHero">Omnisource</strong></div>
+ </div>
+
+ <div class="grid four">
+ <div class="card metric"><div class="label">CLIENT WORKSPACES</div><div class="value">3</div><div class="sub">1 active + 2 examples</div></div>
+ <div class="card metric"><div class="label">ACTIVE DOCUMENTS</div><div class="value" id="activeDocMetric">8</div><div class="sub">For selected client</div></div>
+ <div class="card metric"><div class="label">PENDING REVIEW</div><div class="value">2</div><div class="sub">Awaiting approval</div></div>
+ <div class="card metric"><div class="label">KNOWLEDGE STATUS</div><div class="value" style="font-size:21px">Isolated</div><div class="sub">Client-only retrieval</div></div>
+ </div>
+
+ <div class="grid three">
+ <div class="card" style="border:2px solid #b9d5ef">
+ <div class="chip live" style="display:inline-flex">ACTIVE CLIENT</div>
+ <h3 style="margin-top:12px">Omnisource</h3>
+ <p>Current Phase 1 engagement with 18 workstreams, staffing, HR/payroll infrastructure, benefits, policy/compliance, and weekly operating cadence.</p>
+ <div class="toolbar" style="margin-top:14px"><button class="btn primary" onclick="selectClient('Omnisource',8)">Open Workspace</button></div>
+ </div>
+ <div class="card">
+ <div class="chip" style="display:inline-flex">EXAMPLE CLIENT</div>
+ <h3 style="margin-top:12px">Client B</h3>
+ <p>Separate handbook, benefits structure, payroll vendor, forms, policies, and workstream history.</p>
+ <div class="toolbar" style="margin-top:14px"><button class="btn outline" onclick="selectClient('Client B',5)">Open Workspace</button></div>
+ </div>
+ <div class="card">
+ <div class="chip" style="display:inline-flex">EXAMPLE CLIENT</div>
+ <h3 style="margin-top:12px">Client C</h3>
+ <p>Independent workspace showing how Dr. Patton can onboard future clients without NOFA rebuilding the platform.</p>
+ <div class="toolbar" style="margin-top:14px"><button class="btn outline" onclick="selectClient('Client C',3)">Open Workspace</button></div>
+ </div>
+ </div>
+
+ <div class="grid two">
+ <div class="card">
+ <div class="section-title" style="margin-bottom:10px">
+ <div><h1 style="font-size:20px">Knowledge & Document Library</h1><p>Manage source material the Assistant is authorized to use.</p></div>
+ <button class="btn primary" onclick="openModal('docModal')">Upload Document</button>
+ </div>
+ <div class="filters" id="docFilters">
+ <button class="active" onclick="filterDocs('all',this)">All</button>
+ <button onclick="filterDocs('Policy',this)">Policies</button>
+ <button onclick="filterDocs('Benefits',this)">Benefits</button>
+ <button onclick="filterDocs('Payroll',this)">Payroll / HRIS</button>
+ <button onclick="filterDocs('Forms',this)">Forms</button>
+ </div>
+ <div class="table-wrap">
+ <table id="docTable">
+ <thead><tr><th>Document</th><th>Category</th><th>Status</th><th>Version</th><th>Assistant Use</th><th>Action</th></tr></thead>
+ <tbody>
+ <tr data-category="Policy"><td><strong>Employee Handbook Draft</strong></td><td>Policy</td><td><span class="badge progress">In Review</span></td><td>v0.8</td><td>Restricted</td><td><button class="btn outline" style="padding:6px 8px" onclick="showToast('Document opened')">Open</button></td></tr>
+ <tr data-category="Policy"><td><strong>Remote-Work Policy</strong></td><td>Policy</td><td><span class="badge complete">Active</span></td><td>v1.0</td><td>Enabled</td><td><button class="btn outline" style="padding:6px 8px" onclick="showToast('Document opened')">Open</button></td></tr>
+ <tr data-category="Benefits"><td><strong>Benefits Requirements</strong></td><td>Benefits</td><td><span class="badge complete">Active</span></td><td>v1.0</td><td>Enabled</td><td><button class="btn outline" style="padding:6px 8px" onclick="showToast('Document opened')">Open</button></td></tr>
+ <tr data-category="Payroll"><td><strong>HRIS / Payroll Requirements</strong></td><td>Payroll</td><td><span class="badge complete">Active</span></td><td>v1.1</td><td>Enabled</td><td><button class="btn outline" style="padding:6px 8px" onclick="showToast('Document opened')">Open</button></td></tr>
+ <tr data-category="Payroll"><td><strong>Vendor Comparison Notes</strong></td><td>Payroll</td><td><span class="badge progress">In Review</span></td><td>v0.5</td><td>Restricted</td><td><button class="btn outline" style="padding:6px 8px" onclick="showToast('Document opened')">Open</button></td></tr>
+ <tr data-category="Forms"><td><strong>New-Hire Checklist</strong></td><td>Forms</td><td><span class="badge complete">Active</span></td><td>v1.0</td><td>Enabled</td><td><button class="btn outline" style="padding:6px 8px" onclick="showToast('Document opened')">Open</button></td></tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+
+ <div class="card">
+ <h3>Self-Service Document Controls</h3>
+ <div class="feature-grid" style="grid-template-columns:1fr 1fr">
+ <div class="feature" onclick="openModal('docModal')"><strong>Upload</strong><span>Add PDF, DOCX, spreadsheet, or other approved source material.</span></div>
+ <div class="feature" onclick="showToast('Replace-version workflow opened')"><strong>Replace Version</strong><span>Supersede outdated material while preserving history.</span></div>
+ <div class="feature" onclick="showToast('Assistant access settings opened')"><strong>Assistant Access</strong><span>Enable, restrict, or disable a document for Assistant use.</span></div>
+ <div class="feature" onclick="showToast('Document status review opened')"><strong>Review Status</strong><span>Mark active, in review, outdated, or superseded.</span></div>
+ <div class="feature" onclick="showToast('Category manager opened')"><strong>Categories</strong><span>Policies, handbook, benefits, payroll, recruiting, contracts, forms, vendors, and other.</span></div>
+ <div class="feature" onclick="showToast('Client knowledge audit opened')"><strong>Knowledge Audit</strong><span>See exactly which sources the Assistant can use.</span></div>
+ </div>
+
+ <div class="assistant-box" style="margin-top:18px">
+ <h4>Assistant Knowledge Boundary</h4>
+ <p><strong id="selectedClientKnowledge">Omnisource</strong> is selected. The Assistant may only retrieve from documents assigned to this client and marked as enabled for Assistant use.</p>
+ <ul>
+ <li>No cross-client document retrieval.</li>
+ <li>Drafts identify the client workspace being used.</li>
+ <li>Human review remains required for sensitive HR decisions.</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+
+ <div class="card" style="margin-top:18px">
+ <h3>Client Onboarding Flow</h3>
+ <div class="feature-grid">
+ <div class="feature"><strong>1. Create Client</strong><span>Name, contacts, locations, engagement type.</span></div>
+ <div class="feature"><strong>2. Upload Documents</strong><span>Policies, handbook, benefits, payroll, forms, contracts, vendor files.</span></div>
+ <div class="feature"><strong>3. Approve Knowledge</strong><span>Choose which documents the Assistant may use.</span></div>
+ <div class="feature"><strong>4. Configure Workstreams</strong><span>Set priorities, owners, dates, meetings, deliverables.</span></div>
+ <div class="feature"><strong>5. Use Assistant</strong><span>Prepare briefs, comparisons, drafts, follow-ups, decision materials.</span></div>
+ <div class="feature"><strong>6. Maintain Workspace</strong><span>Replace documents, update statuses, preserve client separation.</span></div>
+ </div>
+ </div>
 </section>
 
 <section id="overview" class="view">
-  <div class="hero">
-    <div><h1>One platform. Four HR advisory disciplines.</h1><p>The Phase 1 workspace sits on top of the broader HR Advisory Group AI™ platform so the system can expand progressively as each development phase is funded and prioritized.</p></div>
-    <div class="assistant">Assistant supports.<br>Professionals decide.</div>
-  </div>
-  <div class="grid four">
-    <div class="card module" onclick="switchView('talent')"><div class="number">MODULE 01</div><h2>Recruitment & Retention</h2><ul><li>Hiring and onboarding</li><li>Retention and mobility</li><li>Workforce gaps</li></ul><div class="open">Open module →</div></div>
-    <div class="card module er" onclick="switchView('employee')"><div class="number">MODULE 02</div><h2>Employee Relations & Performance</h2><ul><li>Case management</li><li>Investigations and performance</li><li>Human escalation</li></ul><div class="open">Open module →</div></div>
-    <div class="card module comp" onclick="switchView('comp')"><div class="number">MODULE 03</div><h2>Compensation & Benefits</h2><ul><li>Compensation philosophy</li><li>Pay and benefits analysis</li><li>Total rewards</li></ul><div class="open">Open module →</div></div>
-    <div class="card module org" onclick="switchView('strategy')"><div class="number">MODULE 04</div><h2>Organizational Strategy</h2><ul><li>Structure and staffing</li><li>Restructuring scenarios</li><li>Headcount and cost modeling</li></ul><div class="open">Open module →</div></div>
-  </div>
-  <div class="grid two">
-    <div class="card"><h3>Assistant-Guided Work</h3><div class="assistant-box" style="margin-top:12px"><ul><li>Organize facts and priorities</li><li>Prepare drafts and summaries</li><li>Surface missing information</li><li>Flag decisions requiring human review</li><li>Prepare meeting and follow-up materials</li></ul></div></div>
-    <div class="card"><h3>Human-Control Framework</h3><div class="callout" style="margin-top:12px"><strong>Human decision point:</strong> Employment, legal, disciplinary, compensation, benefits, restructuring, and other sensitive decisions remain with authorized professionals.</div></div>
-  </div>
+ <div class="hero">
+ <div><h1>One platform. Four HR advisory disciplines.</h1><p>The Phase 1 workspace sits on top of the broader HR Advisory Group Assistant™ platform so the system can expand progressively as each development phase is funded and prioritized.</p></div>
+ <div class="assistant">Assistant supports.<br>Professionals decide.</div>
+ </div>
+ <div class="grid four">
+ <div class="card module" onclick="switchView('talent')"><div class="number">MODULE 01</div><h2>Recruitment & Retention</h2><ul><li>Hiring and onboarding</li><li>Retention and mobility</li><li>Workforce gaps</li></ul><div class="open">Open module →</div></div>
+ <div class="card module er" onclick="switchView('employee')"><div class="number">MODULE 02</div><h2>Employee Relations & Performance</h2><ul><li>Case management</li><li>Investigations and performance</li><li>Human escalation</li></ul><div class="open">Open module →</div></div>
+ <div class="card module comp" onclick="switchView('comp')"><div class="number">MODULE 03</div><h2>Compensation & Benefits</h2><ul><li>Compensation philosophy</li><li>Pay and benefits analysis</li><li>Total rewards</li></ul><div class="open">Open module →</div></div>
+ <div class="card module org" onclick="switchView('strategy')"><div class="number">MODULE 04</div><h2>Organizational Strategy</h2><ul><li>Structure and staffing</li><li>Restructuring scenarios</li><li>Headcount and cost modeling</li></ul><div class="open">Open module →</div></div>
+ </div>
+ <div class="grid two">
+ <div class="card"><h3>Assistant-Guided Work</h3><div class="assistant-box" style="margin-top:12px"><ul><li>Organize facts and priorities</li><li>Prepare drafts and summaries</li><li>Surface missing information</li><li>Flag decisions requiring human review</li><li>Prepare meeting and follow-up materials</li></ul></div></div>
+ <div class="card"><h3>Human-Control Framework</h3><div class="callout" style="margin-top:12px"><strong>Human decision point:</strong> Employment, legal, disciplinary, compensation, benefits, restructuring, and other sensitive decisions remain with authorized professionals.</div></div>
+ </div>
 </section>
 
 <section id="talent" class="view">
-  <div class="section-title"><div><h1>Recruitment & Retention</h1><p>Phase 1 focus: staffing priorities, hiring sequence, onboarding, and role design.</p></div><button class="btn primary" onclick="showToast('Talent review opened')">New Talent Review</button></div>
-  <div class="feature-grid">
-    <div class="feature" onclick="showToast('Priority role planner opened')"><strong>Priority Role Planner</strong><span>Facilities director, finance/accounting leadership, clerk, chief of staff.</span></div>
-    <div class="feature" onclick="showToast('Job description builder opened')"><strong>Job Description Builder</strong><span>Draft role outcomes, responsibilities, requirements, and reporting lines.</span></div>
-    <div class="feature" onclick="showToast('Hiring sequence prepared')"><strong>Hiring Sequence</strong><span>Organize first-wave hiring by dependency and target date.</span></div>
-    <div class="feature" onclick="showToast('Onboarding plan prepared')"><strong>Onboarding Plan</strong><span>Define access, equipment, policies, training, and 30/60/90-day checkpoints.</span></div>
-    <div class="feature" onclick="showToast('Background screening workflow opened')"><strong>Background Screening</strong><span>Domestic and international screening standards and provider criteria.</span></div>
-    <div class="feature" onclick="showToast('Chief-of-staff workspace opened')"><strong>Chief-of-Staff Design</strong><span>Role scope, reporting line, management capacity, and onboarding.</span></div>
-    <div class="feature" onclick="showToast('Device provisioning workflow opened')"><strong>New-Hire Access</strong><span>Phones, laptops, email, role-based access, and equipment responsibility.</span></div>
-    <div class="feature" onclick="showToast('Retention planning opened')"><strong>Retention Planning</strong><span>Future stay interviews, turnover trends, mobility, and workforce gaps.</span></div>
-  </div>
+ <div class="section-title"><div><h1>Recruitment & Retention</h1><p>Phase 1 focus: staffing priorities, hiring sequence, onboarding, and role design.</p></div><div class="toolbar"><button class="btn outline" onclick="openDocUpload({module:'Recruitment & Retention',feature:'General Talent Documents'})">Upload Documents</button><button class="btn primary" onclick="showToast('Talent review opened')">New Talent Review</button></div></div>
+ <div class="feature-grid">
+ <div class="feature" onclick="showToast('Priority role planner opened')"><strong>Priority Role Planner</strong><span>Facilities director, finance/accounting leadership, clerk, chief of staff.</span></div>
+ <div class="feature" onclick="showToast('Job description builder opened')"><strong>Job Description Builder</strong><span>Draft role outcomes, responsibilities, requirements, and reporting lines.</span></div>
+ <div class="feature" onclick="showToast('Hiring sequence prepared')"><strong>Hiring Sequence</strong><span>Organize first-wave hiring by dependency and target date.</span></div>
+ <div class="feature" onclick="showToast('Onboarding plan prepared')"><strong>Onboarding Plan</strong><span>Define access, equipment, policies, training, and 30/60/90-day checkpoints.</span></div>
+ <div class="feature" onclick="showToast('Background screening workflow opened')"><strong>Background Screening</strong><span>Domestic and international screening standards and provider criteria.</span></div>
+ <div class="feature" onclick="showToast('Chief-of-staff workspace opened')"><strong>Chief-of-Staff Design</strong><span>Role scope, reporting line, management capacity, and onboarding.</span></div>
+ <div class="feature" onclick="showToast('Device provisioning workflow opened')"><strong>New-Hire Access</strong><span>Phones, laptops, email, role-based access, and equipment responsibility.</span></div>
+ <div class="feature" onclick="showToast('Retention planning opened')"><strong>Retention Planning</strong><span>Future stay interviews, turnover trends, mobility, and workforce gaps.</span></div>
+ </div>
 </section>
 
 <section id="employee" class="view">
-  <div class="section-title"><div><h1>Employee Relations & Performance</h1><p>HR Advisory Case Management remains part of the integrated platform.</p></div><a class="btn outline" href="https://hr-advisory-group-ai.vercel.app/" target="_blank" style="text-decoration:none">HR Advisory Case Management ↗</a></div>
-  <div class="callout"><strong>HR Advisory Case Management:</strong> the existing case-centered workspace for intake, classification, clarification, drafting, escalation, approvals, and follow-up.</div>
-  <div class="feature-grid">
-    <div class="feature" onclick="showToast('Complaint intake opened')"><strong>Complaint Intake</strong><span>Capture facts, parties, dates, prior actions, and desired outcome.</span></div>
-    <div class="feature" onclick="showToast('Investigation planner opened')"><strong>Investigation Planner</strong><span>Scope, evidence checklist, interviews, and follow-up.</span></div>
-    <div class="feature" onclick="showToast('Performance workflow opened')"><strong>Performance Review</strong><span>Expectations, coaching history, impact, and next steps.</span></div>
-    <div class="feature" onclick="showToast('Corrective action workflow opened')"><strong>Corrective Action</strong><span>Policy, consistency, documentation, approvals.</span></div>
-    <div class="feature" onclick="showToast('PIP workflow opened')"><strong>PIP Support</strong><span>Measurable expectations, milestones, dates, and support.</span></div>
-    <div class="feature" onclick="showToast('Termination review opened')"><strong>Termination Review</strong><span>Documentation gaps and required escalation.</span></div>
-    <div class="feature" onclick="showToast('Leave/accommodation routing opened')"><strong>Leave & Accommodation</strong><span>Route sensitive matters for appropriate review.</span></div>
-    <div class="feature" onclick="showToast('Union review opened')"><strong>Union / CBA Review</strong><span>Flag representation and bargaining considerations.</span></div>
-  </div>
+ <div class="section-title"><div><h1>Employee Relations & Performance</h1><p>HR Advisory Case Management remains part of the integrated platform.</p></div><button class="btn outline" onclick="showToast('HR Advisory Case Management workspace opened')">HR Advisory Case Management</button></div>
+ <div class="callout"><strong>HR Advisory Case Management:</strong> the existing case-centered workspace for intake, classification, clarification, drafting, escalation, approvals, and follow-up.</div>
+ <div class="feature-grid">
+ <div class="feature" onclick="showToast('Complaint intake opened')"><strong>Complaint Intake</strong><span>Capture facts, parties, dates, prior actions, and desired outcome.</span></div>
+ <div class="feature" onclick="showToast('Investigation planner opened')"><strong>Investigation Planner</strong><span>Scope, evidence checklist, interviews, and follow-up.</span></div>
+ <div class="feature" onclick="showToast('Performance workflow opened')"><strong>Performance Review</strong><span>Expectations, coaching history, impact, and next steps.</span></div>
+ <div class="feature" onclick="showToast('Corrective action workflow opened')"><strong>Corrective Action</strong><span>Policy, consistency, documentation, approvals.</span></div>
+ <div class="feature" onclick="showToast('PIP workflow opened')"><strong>PIP Support</strong><span>Measurable expectations, milestones, dates, and support.</span></div>
+ <div class="feature" onclick="showToast('Termination review opened')"><strong>Termination Review</strong><span>Documentation gaps and required escalation.</span></div>
+ <div class="feature" onclick="showToast('Leave/accommodation routing opened')"><strong>Leave & Accommodation</strong><span>Route sensitive matters for appropriate review.</span></div>
+ <div class="feature" onclick="showToast('Union review opened')"><strong>Union / CBA Review</strong><span>Flag representation and bargaining considerations.</span></div>
+ </div>
 </section>
 
 <section id="comp" class="view">
-  <div class="section-title"><div><h1>Compensation & Benefits</h1><p>Phase 1 focus includes benefits design, interim coverage, vendor evaluation, and future compensation analysis.</p></div><button class="btn primary" onclick="showToast('Benefits review opened')">New Benefits Review</button></div>
-  <div class="feature-grid">
-    <div class="feature" onclick="showToast('Benefits scope opened')"><strong>Benefits Scope</strong><span>Medical, dental, vision, pharmacy, 401(k), disability, retirement, workers’ comp, PTO.</span></div>
-    <div class="feature" onclick="showToast('Insurance model comparison opened')"><strong>Fully vs. Self-Insured</strong><span>Cost, flexibility, claims risk, stop-loss, governance, readiness.</span></div>
-    <div class="feature" onclick="showToast('Interim coverage model opened')"><strong>Interim Coverage</strong><span>Stipends, benefits budget, COBRA reimbursement, required protections.</span></div>
-    <div class="feature" onclick="showToast('Benefits administration model opened')"><strong>Benefits Administration</strong><span>Claims management, bill auditing, preferred facilities, staffing.</span></div>
-    <div class="feature" onclick="showToast('Compensation philosophy opened')"><strong>Compensation Philosophy</strong><span>Future market position, equity principles, and salary architecture.</span></div>
-    <div class="feature" onclick="showToast('Total rewards workspace opened')"><strong>Total Rewards</strong><span>Salary, benefits, incentives, and employer-paid value.</span></div>
-  </div>
+ <div class="section-title"><div><h1>Compensation & Benefits</h1><p>Phase 1 focus includes benefits design, interim coverage, vendor evaluation, and future compensation analysis.</p></div><div class="toolbar"><button class="btn outline" onclick="openDocUpload({module:'Compensation & Benefits',feature:'General Compensation & Benefits Documents'})">Upload Documents</button><button class="btn primary" onclick="showToast('Benefits review opened')">New Benefits Review</button></div></div>
+ <div class="feature-grid">
+ <div class="feature" onclick="showToast('Benefits scope opened')"><strong>Benefits Scope</strong><span>Medical, dental, vision, pharmacy, 401(k), disability, retirement, workers’ comp, PTO.</span></div>
+ <div class="feature" onclick="showToast('Insurance model comparison opened')"><strong>Fully vs. Self-Insured</strong><span>Cost, flexibility, claims risk, stop-loss, governance, readiness.</span></div>
+ <div class="feature" onclick="showToast('Interim coverage model opened')"><strong>Interim Coverage</strong><span>Stipends, benefits budget, COBRA reimbursement, required protections.</span></div>
+ <div class="feature" onclick="showToast('Benefits administration model opened')"><strong>Benefits Administration</strong><span>Claims management, bill auditing, preferred facilities, staffing.</span></div>
+ <div class="feature" onclick="showToast('Compensation philosophy opened')"><strong>Compensation Philosophy</strong><span>Future market position, equity principles, and salary architecture.</span></div>
+ <div class="feature" onclick="showToast('Total rewards workspace opened')"><strong>Total Rewards</strong><span>Salary, benefits, incentives, and employer-paid value.</span></div>
+ </div>
 </section>
 
 <section id="strategy" class="view">
-  <div class="section-title"><div><h1>Organizational Strategy</h1><p>Phase 1 focus: operating structure, staffing model, property-related capacity, and workforce design.</p></div><button class="btn primary" onclick="showToast('Strategy scenario opened')">New Strategy Scenario</button></div>
-  <div class="feature-grid">
-    <div class="feature" onclick="showToast('Org structure workspace opened')"><strong>Org Structure</strong><span>Chief-of-staff model, reporting lines, management layers.</span></div>
-    <div class="feature" onclick="showToast('Staffing model opened')"><strong>Initial Staffing Model</strong><span>Director- and manager-level hiring before unnecessary C-suite expansion.</span></div>
-    <div class="feature" onclick="showToast('Property staffing model opened')"><strong>Property Staffing</strong><span>Facilities leadership aligned with acquisition milestones.</span></div>
-    <div class="feature" onclick="showToast('Workforce cost model opened')"><strong>Workforce Cost Modeling</strong><span>Compare organization structures and staffing scenarios.</span></div>
-    <div class="feature" onclick="showToast('Span analysis opened')"><strong>Span of Control</strong><span>Future management-capacity analysis and role balance.</span></div>
-    <div class="feature" onclick="showToast('Succession planning opened')"><strong>Succession Planning</strong><span>Future critical-role and readiness planning.</span></div>
-  </div>
+ <div class="section-title"><div><h1>Organizational Strategy</h1><p>Phase 1 focus: operating structure, staffing model, property-related capacity, and workforce design.</p></div><div class="toolbar"><button class="btn outline" onclick="openDocUpload({module:'Organizational Strategy',feature:'General Strategy Documents'})">Upload Strategy Documents</button><button class="btn primary" onclick="showToast('Strategy scenario opened')">New Strategy Scenario</button></div></div>
+ <div class="feature-grid">
+ <div class="feature" onclick="showToast('Org structure workspace opened')"><strong>Org Structure</strong><span>Chief-of-staff model, reporting lines, management layers.</span></div>
+ <div class="feature" onclick="showToast('Staffing model opened')"><strong>Initial Staffing Model</strong><span>Director- and manager-level hiring before unnecessary C-suite expansion.</span></div>
+ <div class="feature" onclick="showToast('Property staffing model opened')"><strong>Property Staffing</strong><span>Facilities leadership aligned with acquisition milestones.</span></div>
+ <div class="feature" onclick="showToast('Workforce cost model opened')"><strong>Workforce Cost Modeling</strong><span>Compare organization structures and staffing scenarios.</span></div>
+ <div class="feature" onclick="showToast('Span analysis opened')"><strong>Span of Control</strong><span>Future management-capacity analysis and role balance.</span></div>
+ <div class="feature" onclick="showToast('Succession planning opened')"><strong>Succession Planning</strong><span>Future critical-role and readiness planning.</span></div>
+ </div>
 </section>
 
 <section id="policy" class="view">
-  <div class="section-title"><div><h1>Policy Library</h1><p>Phase 1 policy workspace for handbook, remote work, equipment, screening, and compliance materials.</p></div><button class="btn primary" onclick="openModal('policyModal')">Upload Policy</button></div>
-  <div class="grid two">
-    <div class="card">
-      <h3>Phase 1 Policy Priorities</h3>
-      <div class="table-wrap" style="margin-top:12px">
-        <table><thead><tr><th>Policy / Document</th><th>Status</th><th>Owner</th></tr></thead>
-        <tbody>
-          <tr><td>Remote-Work Policy</td><td><span class="badge progress">In Progress</span></td><td>Charmion</td></tr>
-          <tr><td>Employee Handbook Outline</td><td><span class="badge progress">In Progress</span></td><td>Charmion</td></tr>
-          <tr><td>Equipment Responsibility Language</td><td><span class="badge notstarted">Not Started</span></td><td>To assign</td></tr>
-          <tr><td>Background Screening Standard</td><td><span class="badge notstarted">Not Started</span></td><td>To assign</td></tr>
-          <tr><td>New-Hire Access / Provisioning</td><td><span class="badge notstarted">Not Started</span></td><td>To assign</td></tr>
-        </tbody></table>
-      </div>
-    </div>
-    <div class="card">
-      <h3>Policy-Aware Assistant</h3>
-      <div class="assistant-box" style="margin-top:12px">
-        <ul><li>Identify potentially relevant policy areas.</li><li>Prepare draft language for authorized review.</li><li>Track versions, owners, and review dates.</li><li>Surface missing approvals or related procedures.</li><li>Keep human HR/legal review in control.</li></ul>
-      </div>
-    </div>
-  </div>
+ <div class="section-title"><div><h1>Policy Library</h1><p>Phase 1 policy workspace for handbook, remote work, equipment, screening, and compliance materials.</p></div><button class="btn primary" onclick="openModal('policyModal')">Upload Policy</button></div>
+ <div class="grid two">
+ <div class="card">
+ <h3>Phase 1 Policy Priorities</h3>
+ <div class="table-wrap" style="margin-top:12px">
+ <table><thead><tr><th>Policy / Document</th><th>Status</th><th>Owner</th></tr></thead>
+ <tbody>
+ <tr><td>Remote-Work Policy</td><td><span class="badge progress">In Progress</span></td><td>Charmion</td></tr>
+ <tr><td>Employee Handbook Outline</td><td><span class="badge progress">In Progress</span></td><td>Charmion</td></tr>
+ <tr><td>Equipment Responsibility Language</td><td><span class="badge notstarted">Not Started</span></td><td>To assign</td></tr>
+ <tr><td>Background Screening Standard</td><td><span class="badge notstarted">Not Started</span></td><td>To assign</td></tr>
+ <tr><td>New-Hire Access / Provisioning</td><td><span class="badge notstarted">Not Started</span></td><td>To assign</td></tr>
+ </tbody></table>
+ </div>
+ </div>
+ <div class="card">
+ <h3>Policy-Aware Assistant</h3>
+ <div class="assistant-box" style="margin-top:12px">
+ <ul><li>Identify potentially relevant policy areas.</li><li>Prepare draft language for authorized review.</li><li>Track versions, owners, and review dates.</li><li>Surface missing approvals or related procedures.</li><li>Keep human HR/legal review in control.</li></ul>
+ </div>
+ </div>
+ </div>
 </section>
 
-<div class="footer-note"><strong>Prototype notice:</strong> HR Advisory Group AI™ is an AI-powered platform, but the user-facing role is referred to simply as the <strong>Assistant</strong>. The Assistant prepares drafts, organizes work, and supports analysis; authorized professionals remain responsible for final decisions. This prototype is for validation and planning and is not yet a production HR system.</div>
+<div class="footer-note"><strong>Prototype notice:</strong> HR Advisory Group Assistant™ prepares drafts, organizes work, supports analysis, and helps manage client-specific workflows. Authorized professionals remain responsible for final decisions. Each client workspace is designed to maintain separate source documents and Assistant knowledge boundaries. This prototype is for validation and planning and is not yet a production HR system.</div>
 
 </div>
 </main>
@@ -327,14 +449,48 @@ textarea{min-height:100px;resize:vertical}
 <label style="margin-top:12px">Demo file selector<input type="file"></label>
 <div class="modal-actions"><button class="btn outline" onclick="closeModal('policyModal')">Cancel</button><button class="btn primary" onclick="demoSubmit('policyModal','Policy staged for review')">Stage Policy</button></div></div></div>
 
+
+<div id="clientModal" class="modal"><div class="modal-card"><h2>Create Client Workspace</h2>
+<div class="form-grid"><label>Client / Organization Name<input placeholder="Client name"></label><label>Primary Contact<input placeholder="Primary contact"></label></div>
+<div class="form-grid" style="margin-top:12px"><label>Operating Locations<input placeholder="e.g., Atlanta, Austin"></label><label>Engagement Type<select><option>HR Advisory</option><option>HR Setup</option><option>Employee Relations</option><option>Workforce Strategy</option></select></label></div>
+<label style="margin-top:12px">Notes<textarea placeholder="Initial scope, priorities, or onboarding notes..."></textarea></label>
+<div class="modal-actions"><button class="btn outline" onclick="closeModal('clientModal')">Cancel</button><button class="btn primary" onclick="demoSubmit('clientModal','New client workspace created in prototype')">Create Workspace</button></div></div></div>
+
+<div id="docModal" class="modal"><div class="modal-card"><h2>Upload Supporting Document</h2>
+<div class="doc-context"><strong>Attach to:</strong> <span id="docContextLabel">Selected client workspace</span></div>
+<input type="hidden" id="docModuleField" value="">
+<input type="hidden" id="docFeatureField" value="">
+<div class="form-grid"><label>Client<select id="docClientSelect"><option>Omnisource</option><option>Client B</option><option>Client C</option></select></label><label>Category<select><option>Policy</option><option>Handbook</option><option>Benefits</option><option>Payroll / HRIS</option><option>Recruiting</option><option>Compliance</option><option>Contracts</option><option>Forms</option><option>Vendor Proposal</option><option>Other</option></select></label></div>
+<label style="margin-top:12px">Document<input type="file" multiple></label>
+<div class="form-grid" style="margin-top:12px"><label>Version<input placeholder="v1.0"></label><label>Assistant Access<select><option>Enabled</option><option>Restricted until review</option><option>Disabled</option></select></label></div>
+<label style="margin-top:12px">Notes<textarea placeholder="Purpose, effective date, review instructions, or related workstream..."></textarea></label>
+<div class="callout" style="margin-top:12px"><strong>Client isolation:</strong> uploaded documents are assigned only to the selected client workspace.</div>
+<div class="modal-actions"><button class="btn outline" onclick="closeModal('docModal')">Cancel</button><button class="btn primary" onclick="demoSubmit('docModal','Document uploaded to selected client workspace in prototype')">Upload & Stage</button></div></div></div>
+
+
+<div id="docsViewModal" class="modal"><div class="modal-card"><h2>Supporting Documents</h2>
+<div class="doc-context"><strong>Workspace:</strong> <span id="docsViewContext">Selected feature</span></div>
+<div class="table-wrap" style="margin-top:14px">
+<table>
+<thead><tr><th>Document</th><th>Type</th><th>Status</th><th>Version</th><th>Assistant Use</th></tr></thead>
+<tbody>
+<tr><td><strong>Example Supporting Document</strong></td><td>Reference</td><td><span class="badge complete">Active</span></td><td>v1.0</td><td>Enabled</td></tr>
+<tr><td><strong>Example Working Draft</strong></td><td>Draft</td><td><span class="badge progress">In Review</span></td><td>v0.4</td><td>Restricted</td></tr>
+</tbody>
+</table>
+</div>
+<div class="callout" style="margin-top:14px">In production, this list will show only documents assigned to the selected client and functional area.</div>
+<div class="modal-actions"><button class="btn outline" onclick="closeModal('docsViewModal')">Close</button><button class="btn primary" onclick="closeModal('docsViewModal');openDocUpload(currentDocContext)">Upload Another</button></div>
+</div></div>
+
 <div id="toast" class="toast"></div>
 
 <script>
 function switchView(id){
-  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));
-  window.scrollTo({top:0,behavior:'smooth'});
+ document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));
+ window.scrollTo({top:0,behavior:'smooth'});
 }
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>switchView(b.dataset.view)));
 function openModal(id){document.getElementById(id).classList.add('show')}
@@ -342,10 +498,116 @@ function closeModal(id){document.getElementById(id).classList.remove('show')}
 function demoSubmit(id,msg){closeModal(id);showToast(msg)}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),2500)}
 function filterRows(status,btn){
-  document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
-  document.querySelectorAll('#tracker tbody tr').forEach(r=>{r.style.display=(status==='all'||r.dataset.status===status)?'':'none'})
+ document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+ document.querySelectorAll('#tracker tbody tr').forEach(r=>{r.style.display=(status==='all'||r.dataset.status===status)?'':'none'})
 }
 document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('show')}));
+
+function selectClient(name,count){
+ document.getElementById('selectedClientHero').textContent=name;
+ document.getElementById('selectedClientKnowledge').textContent=name;
+ document.getElementById('activeDocMetric').textContent=count;
+ const sel=document.getElementById('docClientSelect');
+ if(sel){[...sel.options].forEach((o,i)=>{if(o.text===name)sel.selectedIndex=i});}
+ showToast(name+' workspace selected');
+}
+function filterDocs(category,btn){
+ document.querySelectorAll('#docFilters button').forEach(b=>b.classList.remove('active'));
+ btn.classList.add('active');
+ document.querySelectorAll('#docTable tbody tr').forEach(r=>{
+ r.style.display=(category==='all'||r.dataset.category===category)?'':'none';
+ });
+}
+
+
+let currentDocContext = {module:'', feature:''};
+
+function getFeatureContext(el){
+  const view = el.closest('.view');
+  let module = '';
+  if(view){
+    const heading = view.querySelector('.section-title h1, .hero h1');
+    module = heading ? heading.textContent.trim() : view.id;
+  }
+  const titleEl = el.querySelector('strong, h2, h3');
+  const feature = titleEl ? titleEl.textContent.trim() : 'Functional Area';
+  return {module, feature};
+}
+
+function openDocUpload(ctx){
+  currentDocContext = ctx || {module:'',feature:''};
+  const label = document.getElementById('docContextLabel');
+  const moduleField = document.getElementById('docModuleField');
+  const featureField = document.getElementById('docFeatureField');
+  if(label) label.textContent = (currentDocContext.module ? currentDocContext.module + ' → ' : '') + (currentDocContext.feature || 'Selected client workspace');
+  if(moduleField) moduleField.value = currentDocContext.module || '';
+  if(featureField) featureField.value = currentDocContext.feature || '';
+  openModal('docModal');
+}
+
+function openDocsView(ctx){
+  currentDocContext = ctx || {module:'',feature:''};
+  const label = document.getElementById('docsViewContext');
+  if(label) label.textContent = (currentDocContext.module ? currentDocContext.module + ' → ' : '') + (currentDocContext.feature || 'Selected functional area');
+  openModal('docsViewModal');
+}
+
+function addDocumentControls(){
+  const eligibleViews = ['phase1','overview','talent','employee','comp','strategy','policy'];
+  eligibleViews.forEach(id=>{
+    const view = document.getElementById(id);
+    if(!view) return;
+    view.querySelectorAll('.feature, .module').forEach(el=>{
+      if(el.querySelector('.doc-actions')) return;
+      const ctx = getFeatureContext(el);
+      const actions = document.createElement('div');
+      actions.className = 'doc-actions';
+      const upload = document.createElement('button');
+      upload.className = 'doc-btn upload';
+      upload.type = 'button';
+      upload.textContent = 'Upload Docs';
+      upload.onclick = function(e){ e.stopPropagation(); openDocUpload(ctx); };
+      const viewBtn = document.createElement('button');
+      viewBtn.className = 'doc-btn';
+      viewBtn.type = 'button';
+      viewBtn.textContent = 'View Docs';
+      viewBtn.onclick = function(e){ e.stopPropagation(); openDocsView(ctx); };
+      actions.appendChild(upload);
+      actions.appendChild(viewBtn);
+      el.appendChild(actions);
+    });
+  });
+
+  // Add document controls to each weekly workstream row.
+  const tracker = document.getElementById('tracker');
+  if(tracker && !tracker.dataset.docsAdded){
+    const headRow = tracker.querySelector('thead tr');
+    const th = document.createElement('th');
+    th.textContent = 'Documents';
+    headRow.appendChild(th);
+
+    tracker.querySelectorAll('tbody tr').forEach(row=>{
+      const nameCell = row.cells[1];
+      const feature = nameCell ? nameCell.textContent.trim() : 'Workstream';
+      const td = document.createElement('td');
+      const up = document.createElement('button');
+      up.className='doc-btn upload';
+      up.textContent='Upload';
+      up.onclick=()=>openDocUpload({module:'Weekly Action Command', feature});
+      const vw = document.createElement('button');
+      vw.className='doc-btn';
+      vw.textContent='View';
+      vw.style.marginLeft='5px';
+      vw.onclick=()=>openDocsView({module:'Weekly Action Command', feature});
+      td.appendChild(up); td.appendChild(vw);
+      row.appendChild(td);
+    });
+    tracker.dataset.docsAdded='1';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', addDocumentControls);
+
 </script>
 </body>
 </html>
